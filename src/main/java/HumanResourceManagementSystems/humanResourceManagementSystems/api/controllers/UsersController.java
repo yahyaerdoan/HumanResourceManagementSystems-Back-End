@@ -27,5 +27,6 @@ public class UsersController {
 	public List<User>getAll(){
 		
 		return this.userService.getAll();
+		
 	}	
 }
