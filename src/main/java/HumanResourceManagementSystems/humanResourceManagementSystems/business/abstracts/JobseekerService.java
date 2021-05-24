@@ -2,9 +2,12 @@ package HumanResourceManagementSystems.humanResourceManagementSystems.business.a
 
 import java.util.List;
 
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
 
 public interface JobseekerService {
 
-	List<Jobseeker>getAll();
+	DataResult<List<Jobseeker>>getAll();
+	Result add(Jobseeker jobseeker);
 }

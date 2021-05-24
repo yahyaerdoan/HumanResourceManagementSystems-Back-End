@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.TypeofworkService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.TypeofworkDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Typeofwork;
 
@@ -20,9 +24,16 @@ public class TypeofworkManager implements TypeofworkService{
 		this.typeofworkDao = typeofworkDao;
 	}
 	@Override
-	public List<Typeofwork> getAll() {
+	public DataResult<List<Typeofwork>> getAll() {
 		
-		return this.typeofworkDao.findAll();
+		return new SuccessDataResult<List<Typeofwork>>
+		(this.typeofworkDao.findAll(), "İş Alanı Türleri Listelendi!");		
+				
+	}
+	@Override
+	public Result add(Typeofwork typeofwork) {
+		this.typeofworkDao.save(typeofwork);
+		return new SuccessResult("İş Türü Eklendi!");
 	}
 	
 }

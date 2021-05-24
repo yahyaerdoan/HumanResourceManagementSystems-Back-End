@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobseekerService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.JobseekerDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
 
@@ -20,9 +24,15 @@ public class JobseekerManager implements JobseekerService{
 		this.jobseekerDao = jobseekerDao;
 	}
 	@Override
-	public List<Jobseeker> getAll() {
+	public DataResult<List<Jobseeker>> getAll() {
 		
-		return this.jobseekerDao.findAll();
+		return new SuccessDataResult<List<Jobseeker>>
+		(this.jobseekerDao.findAll(), "İş Arayanlar Listelendi!");
+	}	
+	@Override
+	public Result add(Jobseeker jobseeker) {
+		this.jobseekerDao.save(jobseeker);
+		return new SuccessResult("İş Arayan Eklendi!");
 	}
 
 }

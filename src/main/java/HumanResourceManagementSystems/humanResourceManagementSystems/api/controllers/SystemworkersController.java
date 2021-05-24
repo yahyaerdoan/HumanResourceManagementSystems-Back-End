@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.SystemworkerService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Systemworker;
 
 @RestController
@@ -23,7 +27,11 @@ public class SystemworkersController {
 	}
 	
 	@GetMapping("/getall")
-	public List<Systemworker>getAll(){
+	public DataResult<List<Systemworker>> getAll(){
 		return this.systemworkerService.getAll();
+	}
+	@PostMapping("/add")
+	public Result add(@RequestBody Systemworker systemworker) {
+		return this.systemworkerService.add(systemworker);		
 	}
 }
