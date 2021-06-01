@@ -6,7 +6,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.User;
 
-public interface UserService {
+public interface UserService{
 
 	DataResult<List<User>> getAll();
 
