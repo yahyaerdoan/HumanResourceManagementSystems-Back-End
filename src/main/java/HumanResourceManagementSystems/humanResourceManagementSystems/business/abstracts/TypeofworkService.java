@@ -9,5 +9,8 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 public interface TypeofworkService {
 
 	DataResult<List<Typeofwork>> getAll();
-	Result add(Typeofwork typeofwork);
+
+	Result add(Typeofwork typeofwork);	
+
+	DataResult<Typeofwork> getWorkByTitle(String title);
 }

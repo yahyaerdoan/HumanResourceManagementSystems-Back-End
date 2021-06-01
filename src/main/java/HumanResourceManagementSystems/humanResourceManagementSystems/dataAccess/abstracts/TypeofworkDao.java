@@ -6,4 +6,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 
 public interface TypeofworkDao extends JpaRepository<Typeofwork, Integer> {
 
+	Typeofwork findByTitle(String title);
+
+	Typeofwork getById(String id);
 }

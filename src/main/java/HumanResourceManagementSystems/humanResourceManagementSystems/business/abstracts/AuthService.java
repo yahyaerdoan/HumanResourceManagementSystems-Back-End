@@ -1,15 +1,13 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts;
 
-import java.util.List;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Employer;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
 
-public interface EmployerService {
+public interface AuthService {
 
-	DataResult<List<Employer>> getAll();
+	Result registerEmployer(Employer employer, String confirmPassword);
 
-	Result add(Employer employer);
-	
+	Result registerJobseeker(Jobseeker jobseeker, String confirmPassword);
 }

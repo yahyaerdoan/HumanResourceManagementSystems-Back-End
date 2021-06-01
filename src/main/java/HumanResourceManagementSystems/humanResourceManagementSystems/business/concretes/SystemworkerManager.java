@@ -14,10 +14,10 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Systemworker;
 
 @Service
-public class SystemworkerManager implements SystemworkerService{
+public class SystemworkerManager implements SystemworkerService {
 
 	private SystemworkerDao systemworkerDao;
-	
+
 	@Autowired
 	public SystemworkerManager(SystemworkerDao systemworkerDao) {
 		super();
@@ -26,15 +26,15 @@ public class SystemworkerManager implements SystemworkerService{
 
 	@Override
 	public DataResult<List<Systemworker>> getAll() {
-		
-		return new SuccessDataResult<List<Systemworker>>
-		(this.systemworkerDao.findAll(), "Sistem Çalışanları Listelendi!");				
+
+		return new SuccessDataResult<List<Systemworker>>(this.systemworkerDao.findAll(),
+				"Sistem çalışanları listelendi.");
 	}
 
 	@Override
 	public Result add(Systemworker systemworker) {
 		this.systemworkerDao.save(systemworker);
-		return new SuccessResult("Sistem Çalışını Eklendi!");
+		return new SuccessResult("Sistem çalışını eklendi.");
 	}
 
 }

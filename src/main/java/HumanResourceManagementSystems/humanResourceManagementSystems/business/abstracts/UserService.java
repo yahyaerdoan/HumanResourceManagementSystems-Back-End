@@ -9,5 +9,8 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 public interface UserService {
 
 	DataResult<List<User>> getAll();
+
 	Result add(User user);
+
+	DataResult<User> getUserByEmailAddress(String emailAddress);
 }

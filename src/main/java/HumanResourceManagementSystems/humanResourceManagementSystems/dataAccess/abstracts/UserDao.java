@@ -6,4 +6,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 
 public interface UserDao extends JpaRepository<User, Integer> {
 
+	User findUserByEmailAddress(String emailAddress);
+
+	User getById(int id);
 }

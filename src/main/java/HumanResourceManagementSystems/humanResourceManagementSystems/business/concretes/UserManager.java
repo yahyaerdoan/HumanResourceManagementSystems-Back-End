@@ -14,24 +14,31 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.User;
 
 @Service
-public class UserManager implements UserService{
+public class UserManager implements UserService {
 
 	private UserDao userDao;
-	
+
 	@Autowired
 	public UserManager(UserDao userDao) {
 		super();
 		this.userDao = userDao;
 	}
+
 	@Override
 	public DataResult<List<User>> getAll() {
-		
-		return new SuccessDataResult<List<User>>
-		(this.userDao.findAll(), "Kullanıcılar Listelendi!");				
+
+		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "Kullanıcılar listelendi.");
 	}
+
 	@Override
 	public Result add(User user) {
 		this.userDao.save(user);
-		return new SuccessResult("Kullanıcı Eklendi!");
+		return new SuccessResult("Kullanıcı eklendi.");
+	}
+
+	@Override
+	public DataResult<User> getUserByEmailAddress(String emailAddress) {
+
+		return new SuccessDataResult<User>(this.userDao.findUserByEmailAddress(emailAddress));
 	}
 }

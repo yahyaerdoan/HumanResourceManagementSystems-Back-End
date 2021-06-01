@@ -9,5 +9,6 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 public interface SystemworkerService {
 
 	DataResult<List<Systemworker>> getAll();
+
 	Result add(Systemworker systemworker);
 }

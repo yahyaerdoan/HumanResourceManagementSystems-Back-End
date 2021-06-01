@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.UserService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Typeofwork;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.User;
 
 @RestController

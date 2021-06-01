@@ -6,4 +6,5 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 
 public interface SystemworkerDao extends JpaRepository<Systemworker, Integer> {
 
+	Systemworker getById(int id);
 }

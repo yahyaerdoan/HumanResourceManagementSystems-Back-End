@@ -14,26 +14,33 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Typeofwork;
 
 @Service
-public class TypeofworkManager implements TypeofworkService{
+public class TypeofworkManager implements TypeofworkService {
 
 	private TypeofworkDao typeofworkDao;
-	
+
 	@Autowired
 	public TypeofworkManager(TypeofworkDao typeofworkDao) {
 		super();
 		this.typeofworkDao = typeofworkDao;
 	}
+
 	@Override
 	public DataResult<List<Typeofwork>> getAll() {
-		
-		return new SuccessDataResult<List<Typeofwork>>
-		(this.typeofworkDao.findAll(), "İş Alanı Türleri Listelendi!");		
-				
+
+		return new SuccessDataResult<List<Typeofwork>>(this.typeofworkDao.findAll(), 
+				"İş pozisyonları listelendi.");
 	}
+
 	@Override
 	public Result add(Typeofwork typeofwork) {
 		this.typeofworkDao.save(typeofwork);
-		return new SuccessResult("İş Türü Eklendi!");
+		return new SuccessResult("İş pzisyonu eklendi.");
 	}
-	
+
+	@Override
+	public DataResult<Typeofwork> getWorkByTitle(String title) {
+		return new SuccessDataResult<Typeofwork>(this.typeofworkDao.findByTitle(title), 
+				"İş pozisyonları getirildi.");
+	}
+
 }

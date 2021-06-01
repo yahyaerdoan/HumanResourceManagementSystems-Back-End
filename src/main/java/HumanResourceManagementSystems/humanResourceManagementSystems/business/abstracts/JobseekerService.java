@@ -8,6 +8,9 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 
 public interface JobseekerService {
 
-	DataResult<List<Jobseeker>>getAll();
+	DataResult<List<Jobseeker>> getAll();
+
 	Result add(Jobseeker jobseeker);
+
+	DataResult<Jobseeker> getJobseekerByNationalId(String nationalityId);
 }

@@ -14,25 +14,33 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
 
 @Service
-public class JobseekerManager implements JobseekerService{
+public class JobseekerManager implements JobseekerService {
 
 	private JobseekerDao jobseekerDao;
-	
+
 	@Autowired
 	public JobseekerManager(JobseekerDao jobseekerDao) {
 		super();
 		this.jobseekerDao = jobseekerDao;
 	}
+
 	@Override
 	public DataResult<List<Jobseeker>> getAll() {
-		
-		return new SuccessDataResult<List<Jobseeker>>
-		(this.jobseekerDao.findAll(), "İş Arayanlar Listelendi!");
-	}	
+
+		return new SuccessDataResult<List<Jobseeker>>(this.jobseekerDao.findAll(), 
+				"İş arayanlar listelendi.");
+	}
+
 	@Override
 	public Result add(Jobseeker jobseeker) {
 		this.jobseekerDao.save(jobseeker);
-		return new SuccessResult("İş Arayan Eklendi!");
+		return new SuccessResult("İş arayan eklendi.");
+	}
+
+	@Override
+	public DataResult<Jobseeker> getJobseekerByNationalId(String nationalityId) {
+		return new SuccessDataResult<Jobseeker>(this.jobseekerDao.findJobseekerByNationalityId(nationalityId),
+				"İş arayan kimlik id'ye göre getirildi.");
 	}
 
 }

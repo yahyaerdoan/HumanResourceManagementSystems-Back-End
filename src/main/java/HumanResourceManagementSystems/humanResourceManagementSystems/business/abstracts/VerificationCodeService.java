@@ -1,0 +1,9 @@
+package HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts;
+
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.VerificationCode;
+
+public interface VerificationCodeService {
+
+	Result add(VerificationCode code);
+}

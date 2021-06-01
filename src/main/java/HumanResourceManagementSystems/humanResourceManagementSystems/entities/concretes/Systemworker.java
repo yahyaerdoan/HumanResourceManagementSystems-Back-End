@@ -30,5 +30,4 @@ public class Systemworker {
 	@Column(name="systemWorkerName")
 	private String systemWorkerName;	
 	
-
 }

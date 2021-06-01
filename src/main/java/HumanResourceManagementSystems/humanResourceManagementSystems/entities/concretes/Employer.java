@@ -1,11 +1,17 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,15 +22,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="employers")
-public class Employer {
+@PrimaryKeyJoinColumn(name = "userId")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdverts"}) // Datanın sonsuz döngü içine girip aktarılmasının önünü kesiyor ve data ne kadarsa onu aktarıyor.
+public class Employer extends User{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name="id")
+	//private int id;
 	
-	@Column(name="userId")
-	private int userId;
+	//@Column(name="userId")
+	//private int userId;
 	
 	@Column(name="companyName")
 	private String companyName;
@@ -35,4 +43,9 @@ public class Employer {
 	@Column(name="phoneNumber")
 	private String phoneNumber;
 
+	@Column(name = "isVerified", columnDefinition = "boolean default false")
+	private boolean isVerified = false;
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvert> jobAdverts;
 }

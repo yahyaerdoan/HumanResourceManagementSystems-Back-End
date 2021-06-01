@@ -6,4 +6,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 
 public interface JobseekerDao extends JpaRepository<Jobseeker, Integer> {
 
+	Jobseeker findJobseekerByNationalityId(String nationalityId);
+
+	Jobseeker getById(int id);
 }
