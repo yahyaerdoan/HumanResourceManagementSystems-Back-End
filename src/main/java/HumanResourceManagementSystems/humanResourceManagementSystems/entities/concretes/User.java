@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="users")
-
 @Inheritance(strategy = InheritanceType.JOINED)
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","employers"})
 public class User {
@@ -45,7 +44,7 @@ public class User {
 	//@Column(name="verified")
 	//private boolean verified;
 	
-	@Column(name= "createdAt", columnDefinition = "Date defult current_date")
+	@Column(name= "createdAt", columnDefinition = "Date default current_date")
 	private LocalDate createdAt = LocalDate.now();
 	
 	@Column(name= "isActive", columnDefinition = "boolean default true")

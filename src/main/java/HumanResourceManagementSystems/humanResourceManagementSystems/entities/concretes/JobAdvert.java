@@ -57,14 +57,15 @@ public class JobAdvert {
 	@Column(name = "createdAt")
 	private LocalDate createdAt;
 
-	@Column(name = "isOpen")
+	@Column(name = "isOpen", columnDefinition = "Date default current_date")
 	private boolean isOpen;
 
-	@Column(name = "isActive")
+	@Column(name = "isActive", columnDefinition = "boolean default true")
 	private boolean isActive;
 
-	@Column(name = "isDeleted")	
+	@Column(name = "isDeleted", columnDefinition = "boolean default false")	
 	private boolean isDeleted;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "typeOfWorkId")
@@ -77,4 +78,5 @@ public class JobAdvert {
 	@ManyToOne
 	@JoinColumn(name = "cityId")
 	private City city;
+	
 }

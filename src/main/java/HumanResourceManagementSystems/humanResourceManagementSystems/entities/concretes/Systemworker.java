@@ -6,10 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -17,15 +19,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="systemworkers")
-public class Systemworker {
+@PrimaryKeyJoinColumn(name = "userId")
+@EqualsAndHashCode(callSuper=false)
+public class Systemworker extends User{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="userId")
-	private int userId;
+	//@Column(name="userId")
+	//private int userId;
 	
 	@Column(name="systemWorkerName")
 	private String systemWorkerName;	

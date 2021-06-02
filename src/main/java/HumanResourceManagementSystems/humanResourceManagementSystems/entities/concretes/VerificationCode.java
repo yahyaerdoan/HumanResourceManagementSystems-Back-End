@@ -33,8 +33,14 @@ public class VerificationCode {
 	@Column(name="isConfirmed")
 	private boolean isConfirmed;
 	
-	@Column(name="createdAt", columnDefinition = "Date defult current_date")
+	@Column(name="createdAt", columnDefinition = "Date default current_date")
 	private LocalDate createAt = LocalDate.now();
+	
+	@Column(name= "isActive", columnDefinition = "boolean default true")
+	private boolean isActive = true;
+	
+	@Column(name= "isDeleted", columnDefinition = "boolean default false")
+	private boolean isDeleted = false;
 
 	public VerificationCode(int userId, String code, boolean isConfirmed, LocalDate createAt) {
 		super();

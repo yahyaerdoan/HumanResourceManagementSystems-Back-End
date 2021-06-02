@@ -1,7 +1,5 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes;
 
-
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,31 +21,31 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="typeofworks")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdverts"})
+@Table(name = "typeofworks")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
 public class Typeofwork {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="title")
+
+	@Column(name = "title")
 	private String title;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
 
-	@Column(name= "createdAt", columnDefinition = "Date defult current_date")
+	@Column(name = "createdAt", columnDefinition = "Date default current_date")
 	private LocalDate createdDate = LocalDate.now();
-	
-	@Column(name= "isActive", columnDefinition = "boolean default true")
+
+	@Column(name = "isActive", columnDefinition = "boolean default true")
 	private boolean isActive = true;
-	
-	@Column(name= "isDeleted", columnDefinition = "boolean default false")
+
+	@Column(name = "isDeleted", columnDefinition = "boolean default false")
 	private boolean isDeleted = false;
-	
+
 	@OneToMany(mappedBy = "typeofwork") // jobAdverts tablosu typeofwork tablosu ile ilişkilendirilmiş durumda
-	private List<JobAdvert> jobAdverts; 
-	
+	private List<JobAdvert> jobAdverts;
+
 }
