@@ -20,30 +20,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "cities")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdverts"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
 public class City {
 
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@OneToMany(mappedBy = "city")
 	private List<JobAdvert> jobAdverts;
-	
-	@Column(name= "isActive", columnDefinition = "boolean default true")
-	private boolean isActive = true;
-	
-	@Column(name= "isDeleted", columnDefinition = "boolean default false")
-	private boolean isDeleted = false;
-	
-	public City(int id, String name, List<JobAdvert> jobAdverts) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.jobAdverts = jobAdverts;
-	}
+
 }

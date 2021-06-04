@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -20,21 +21,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "jobadverts")
-public class JobAdvert {
+@EqualsAndHashCode(callSuper = true)
+public class JobAdvert extends Base {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 
-	//	@Column(name = "typeOfWorkId")
-	//	private int typeOfWorkId;
+	// @Column(name = "typeOfWorkId")
+	// private int typeOfWorkId;
 
-	//	@Column(name = "employerId")
-	//	private int employerId;
-	
-	//	@Column(name = "cityId")
-	//	private int cityId;
+	// @Column(name = "employerId")
+	// private int employerId;
+
+	// @Column(name = "cityId")
+	// private int cityId;
 
 	@Column(name = "description")
 	private String description;
@@ -53,18 +55,10 @@ public class JobAdvert {
 
 	@Column(name = "publishedAt")
 	private LocalDate publishedAt;
-
-	@Column(name = "createdAt")
-	private LocalDate createdAt;
-
-	@Column(name = "isOpen", columnDefinition = "Date default current_date")
+	
+	@Column(name = "isOpen")
 	private boolean isOpen;
 
-	@Column(name = "isActive", columnDefinition = "boolean default true")
-	private boolean isActive;
-
-	@Column(name = "isDeleted", columnDefinition = "boolean default false")	
-	private boolean isDeleted;
 	
 
 	@ManyToOne
@@ -78,5 +72,5 @@ public class JobAdvert {
 	@ManyToOne
 	@JoinColumn(name = "cityId")
 	private City city;
-	
+
 }

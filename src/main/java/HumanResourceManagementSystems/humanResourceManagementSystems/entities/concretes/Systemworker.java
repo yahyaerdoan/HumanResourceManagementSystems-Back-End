@@ -1,6 +1,5 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,23 +14,23 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name="systemworkers")
+@Table(name = "systemworkers")
 @PrimaryKeyJoinColumn(name = "userId")
-@EqualsAndHashCode(callSuper=false)
-public class Systemworker extends User{
+@EqualsAndHashCode(callSuper = true)
+public class Systemworker extends User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
-	
-	//@Column(name="userId")
-	//private int userId;
-	
-	@Column(name="systemWorkerName")
-	private String systemWorkerName;	
-	
+
+	// @Column(name="userId")
+	// private int userId;
+
+	@Column(name = "systemWorkerName")
+	private String systemWorkerName;
+
 }

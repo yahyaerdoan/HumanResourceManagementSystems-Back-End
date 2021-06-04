@@ -1,6 +1,5 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,15 +14,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Table(name = "typeofworks")
+@EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
-public class Typeofwork {
+public class Typeofwork extends Base {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,15 +36,6 @@ public class Typeofwork {
 
 	@Column(name = "description")
 	private String description;
-
-	@Column(name = "createdAt", columnDefinition = "Date default current_date")
-	private LocalDate createdDate = LocalDate.now();
-
-	@Column(name = "isActive", columnDefinition = "boolean default true")
-	private boolean isActive = true;
-
-	@Column(name = "isDeleted", columnDefinition = "boolean default false")
-	private boolean isDeleted = false;
 
 	@OneToMany(mappedBy = "typeofwork") // jobAdverts tablosu typeofwork tablosu ile ilişkilendirilmiş durumda
 	private List<JobAdvert> jobAdverts;
