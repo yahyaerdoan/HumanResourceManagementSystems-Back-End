@@ -28,7 +28,7 @@ public class Link extends Base {
 	private int id;
 
 	@Column(name = "linkName")
-	private String name;
+	private String linkName;
 
 	@Column(name = "url")
 	private String url;
