@@ -27,14 +27,18 @@ public class JobseekerManager implements JobseekerService {
 	@Override
 	public DataResult<List<Jobseeker>> getAll() {
 
-		return new SuccessDataResult<List<Jobseeker>>(this.jobseekerDao.findAll(), 
-				"İş arayanlar listelendi.");
+		return new SuccessDataResult<List<Jobseeker>>(this.jobseekerDao.findAll(), "İş arayanlar listelendi.");
 	}
 
 	@Override
 	public Result add(Jobseeker jobseeker) {
 		this.jobseekerDao.save(jobseeker);
 		return new SuccessResult("İş arayan eklendi.");
+	}
+
+	@Override
+	public DataResult<Jobseeker> getById(int id) {
+		return new SuccessDataResult<Jobseeker>(this.jobseekerDao.getById(id));
 	}
 
 	@Override
