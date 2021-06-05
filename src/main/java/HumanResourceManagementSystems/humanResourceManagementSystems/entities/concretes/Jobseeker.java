@@ -71,4 +71,8 @@ public class Jobseeker extends User {
 	@JsonIgnore
 	@OneToOne(mappedBy = "jobseeker", optional = false, fetch = FetchType.LAZY)
 	private Image images;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobseeker")
+	private List<Link> links;
 }
