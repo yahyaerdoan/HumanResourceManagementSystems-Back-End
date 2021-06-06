@@ -14,6 +14,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.business.ab
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobSeekerCurriculumVitaeDto;
 
 @RestController
 @RequestMapping("/api/jobseekers")
@@ -40,5 +41,10 @@ public class JobseekersController {
 	@GetMapping("/getall")
 	public DataResult<List<Jobseeker>> getAll() {
 		return this.jobseekerService.getAll();
+	}
+
+	@GetMapping("/getJobSeekerCurriculumVitaeDtosById")
+	public DataResult<JobSeekerCurriculumVitaeDto> getJobSeekerCurriculumVitaeDtosById(@RequestParam int id) {
+		return this.jobseekerService.getJobSeekerCurriculumVitaeDtosById(id);
 	}
 }

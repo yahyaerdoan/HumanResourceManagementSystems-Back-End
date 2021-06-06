@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "coverLetters")
+@Table(name = "coverletters")
 @EqualsAndHashCode(callSuper = true)
 public class CoverLetter extends Base {
 

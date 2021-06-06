@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "foreignLanguages")
+@Table(name = "foreignlanguages")
 @EqualsAndHashCode(callSuper = true)
 public class ForeignLanguage extends Base {
 
