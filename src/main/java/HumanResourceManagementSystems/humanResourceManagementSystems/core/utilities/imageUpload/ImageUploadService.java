@@ -8,5 +8,5 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 
 public interface ImageUploadService {
 
-	DataResult<Map> uploadImageFile(MultipartFile imageFile);
+	DataResult<Map<String, String>> uploadImageFile(MultipartFile imageFile);
 }

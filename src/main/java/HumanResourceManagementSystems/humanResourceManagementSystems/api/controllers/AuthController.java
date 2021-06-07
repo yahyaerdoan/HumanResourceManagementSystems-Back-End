@@ -12,24 +12,24 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-	@Autowired
+	
 	private AuthService authService;
 
-	
+	@Autowired
 	public AuthController(AuthService authService) {
 		this.authService = authService;
 	}
 
 	@PostMapping("/registerEmployer")
 	public Result registerEmpolyer(@RequestBody Employer employer, String confirmPassword) {
-		return authService.registerEmployer(employer, confirmPassword);
+		return this.authService.registerEmployer(employer, confirmPassword);
 	}
 
 	@PostMapping("/registerJobseeker")
 	public Result registerJobseeker(@RequestBody Jobseeker jobseeker, String confirmPassword) {
-		return authService.registerJobseeker(jobseeker, confirmPassword);
+		return this.authService.registerJobseeker(jobseeker, confirmPassword);
 	}
 }

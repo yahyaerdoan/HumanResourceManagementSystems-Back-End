@@ -26,10 +26,10 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
 public class Typeofwork extends Base {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name = "id")
+	//private int id;
 
 	@Column(name = "title")
 	private String title;

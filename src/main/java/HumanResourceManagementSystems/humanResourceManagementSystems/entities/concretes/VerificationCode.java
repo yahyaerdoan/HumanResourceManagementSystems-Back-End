@@ -20,10 +20,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class VerificationCode extends Base {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name = "id")
+	//private int id;
 
 	@Column(name = "userId")
 	private int userId;

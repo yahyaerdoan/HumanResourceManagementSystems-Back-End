@@ -185,7 +185,7 @@ public class AuthManager implements AuthService {
 
 	private void verificationCodeRecord(String code, int id, String emailAddress) {
 
-		VerificationCode verificationCode = new VerificationCode(id, id, code, false);
+		VerificationCode verificationCode = new VerificationCode(id, code, false);
 		this.verificationCodeService.add(verificationCode);
 		System.out.println("Doğrulama kodu gönderildi. " + emailAddress);
 

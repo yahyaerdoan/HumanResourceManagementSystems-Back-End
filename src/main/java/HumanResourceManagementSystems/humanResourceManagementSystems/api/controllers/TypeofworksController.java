@@ -17,21 +17,22 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 @RestController
 @RequestMapping("/api/typeofworks")
 public class TypeofworksController {
-	
-	@Autowired
+
 	private TypeofworkService typeofworkService;
 
+	@Autowired
 	public TypeofworksController(TypeofworkService typeofworkService) {
 		super();
 		this.typeofworkService = typeofworkService;
 	}
-	
+
 	@GetMapping("/getall")
-	public DataResult<List<Typeofwork>> getAll(){
+	public DataResult<List<Typeofwork>> getAll() {
 		return this.typeofworkService.getAll();
 	}
+
 	@PostMapping("/add")
 	public Result add(@RequestBody Typeofwork typeofwork) {
-		return this.typeofworkService.add(typeofwork);		
+		return this.typeofworkService.add(typeofwork);
 	}
 }

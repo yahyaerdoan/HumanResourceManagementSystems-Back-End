@@ -27,18 +27,18 @@ public class ImageUploadManager implements ImageUploadService {
 	}
 
 	@Override
-	public DataResult<Map> uploadImageFile(MultipartFile imageFile) {
+	public DataResult<Map<String, String>> uploadImageFile(MultipartFile imageFile) {
 		try {
 			@SuppressWarnings("unchecked")
 			Map<String, String> resultMap = (Map<String, String>) cloudinary.uploader().upload(imageFile.getBytes(),
 					ObjectUtils.emptyMap());
-			return new SuccessDataResult<Map>(resultMap);
+			return new SuccessDataResult<Map<String, String>>(resultMap);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}
-		return new ErrorDataResult<Map>();
+		return new ErrorDataResult<Map<String, String>>();
 	}
 
 }

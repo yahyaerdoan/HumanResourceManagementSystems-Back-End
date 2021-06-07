@@ -21,12 +21,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "cities")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
-public class City {
+public class City extends Base {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private int id;
+	// @Id
+	// @GeneratedValue
+	// @Column(name = "id")
+	// private int id;
 
 	@Column(name = "name")
 	private String name;

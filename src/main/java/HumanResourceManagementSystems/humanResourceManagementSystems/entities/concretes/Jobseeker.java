@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -30,16 +32,13 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class Jobseeker extends User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name = "id")
+	//private int id;
 
-	// @Column(name="userId")
-	// private int userId;
-
-	@Column(name = "typeOfWorkId")
-	private int typeOfWorkId;
+	//@Column(name="userId")
+	//private int userId;
 
 	@Column(name = "firstName")
 	private String firstName;
