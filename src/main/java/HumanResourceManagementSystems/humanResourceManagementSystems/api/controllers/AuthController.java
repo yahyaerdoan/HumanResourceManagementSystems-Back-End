@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.AuthService;
@@ -24,12 +25,12 @@ public class AuthController {
 	}
 
 	@PostMapping("/registerEmployer")
-	public Result registerEmpolyer(@RequestBody Employer employer, String confirmPassword) {
+	public Result registerEmpolyer(@RequestBody Employer employer, @RequestParam String confirmPassword) {
 		return this.authService.registerEmployer(employer, confirmPassword);
 	}
 
 	@PostMapping("/registerJobseeker")
-	public Result registerJobseeker(@RequestBody Jobseeker jobseeker, String confirmPassword) {
+	public Result registerJobseeker(@RequestBody Jobseeker jobseeker, @RequestParam String confirmPassword) {
 		return this.authService.registerJobseeker(jobseeker, confirmPassword);
 	}
 }

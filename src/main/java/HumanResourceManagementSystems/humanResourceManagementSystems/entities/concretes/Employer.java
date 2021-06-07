@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -49,5 +50,6 @@ public class Employer extends User {
 	private boolean isVerified = false;
 
 	@OneToMany(mappedBy = "employer")
+	@JsonIgnore
 	private List<JobAdvert> jobAdverts;
 }
