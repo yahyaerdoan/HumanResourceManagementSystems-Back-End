@@ -30,6 +30,12 @@ public class Systemworker extends User {
 	// @Column(name="userId")
 	// private int userId;
 
+	@Column(name = "firstName")
+	private String firstName;
+	
+	@Column(name = "lastNme")
+	private String lastName;
+	
 	@Column(name = "systemWorkerName")
 	private String systemWorkerName;
 

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.CityService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.CityDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.City;
 
@@ -20,6 +22,12 @@ public class CityManager implements CityService {
 	public CityManager(CityDao cityDao) {
 		super();
 		this.cityDao = cityDao;
+	}
+
+	@Override
+	public Result add(City city) {
+		this.cityDao.save(city);
+		return new SuccessResult("Şehir bilgisi eklendi");
 	}
 
 	@Override
