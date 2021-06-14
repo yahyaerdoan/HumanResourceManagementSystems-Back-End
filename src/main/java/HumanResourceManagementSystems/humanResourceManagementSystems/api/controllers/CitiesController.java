@@ -3,6 +3,7 @@ package HumanResourceManagementSystems.humanResourceManagementSystems.api.contro
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.CityService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.City;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/cities")
 public class CitiesController {
