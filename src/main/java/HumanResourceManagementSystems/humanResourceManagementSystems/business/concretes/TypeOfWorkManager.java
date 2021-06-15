@@ -5,41 +5,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.TypeofworkService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.TypeOfWorkService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
-import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.TypeofworkDao;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Typeofwork;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.TypeOfWorkDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.TypeOfWork;
 
 @Service
-public class TypeofworkManager implements TypeofworkService {
+public class TypeOfWorkManager implements TypeOfWorkService {
 
-	private TypeofworkDao typeofworkDao;
+	private TypeOfWorkDao typeOfWorkDao;
 
 	@Autowired
-	public TypeofworkManager(TypeofworkDao typeofworkDao) {
+	public TypeOfWorkManager(TypeOfWorkDao typeOfWorkDao) {
 		super();
-		this.typeofworkDao = typeofworkDao;
+		this.typeOfWorkDao = typeOfWorkDao;
 	}
 
 	@Override
-	public DataResult<List<Typeofwork>> getAll() {
+	public DataResult<List<TypeOfWork>> getAll() {
 
-		return new SuccessDataResult<List<Typeofwork>>(this.typeofworkDao.findAll(), 
+		return new SuccessDataResult<List<TypeOfWork>>(this.typeOfWorkDao.findAll(), 
 				"İş pozisyonları listelendi.");
 	}
 
 	@Override
-	public Result add(Typeofwork typeofwork) {
-		this.typeofworkDao.save(typeofwork);
+	public Result add(TypeOfWork typeOfWork) {
+		this.typeOfWorkDao.save(typeOfWork);
 		return new SuccessResult("İş pzisyonu eklendi.");
 	}
 
 	@Override
-	public DataResult<Typeofwork> getWorkByTitle(String title) {
-		return new SuccessDataResult<Typeofwork>(this.typeofworkDao.findByTitle(title), 
+	public DataResult<TypeOfWork> getWorkByTitle(String title) {
+		return new SuccessDataResult<TypeOfWork>(this.typeOfWorkDao.findByTitle(title), 
 				"İş pozisyonları getirildi.");
 	}
 

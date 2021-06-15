@@ -37,8 +37,8 @@ public class ForeignLanguageManager implements ForeignLanguageService {
 	}
 
 	@Override
-	public DataResult<List<ForeignLanguage>> getAllByJobseekerId(int id) {
-		return new SuccessDataResult<List<ForeignLanguage>>(this.foreignLanguageDao.getAllByJobseekerId(id));
+	public DataResult<List<ForeignLanguage>> getAllByJobSeekerId(int id) {
+		return new SuccessDataResult<List<ForeignLanguage>>(this.foreignLanguageDao.getAllByJobSeekerId(id));
 	}
 
 }

@@ -4,18 +4,18 @@ import java.util.List;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobSeeker;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobSeekerCurriculumVitaeDto;
 
-public interface JobseekerService {
+public interface JobSeekerService {
 
-	DataResult<List<Jobseeker>> getAll();
+	DataResult<List<JobSeeker>> getAll();
 
-	Result add(Jobseeker jobseeker);
+	Result add(JobSeeker jobSeeker);
 
-	DataResult<Jobseeker> getById(int id);
+	DataResult<JobSeeker> getById(int id);
 
-	DataResult<Jobseeker> getJobseekerByNationalId(String nationalityId);
+	DataResult<JobSeeker> getJobSeekerByNationalId(String nationalityId);
 	
 	DataResult<JobSeekerCurriculumVitaeDto> getJobSeekerCurriculumVitaeDtosById(int id);
 }

@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.TypeofworkService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.TypeOfWorkService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Typeofwork;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.TypeOfWork;
 
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/typeofworks")
-public class TypeofworksController {
+public class TypeOfWorksController {
 
-	private TypeofworkService typeofworkService;
+	private TypeOfWorkService typeOfWorkService;
 
 	@Autowired
-	public TypeofworksController(TypeofworkService typeofworkService) {
+	public TypeOfWorksController(TypeOfWorkService typeOfWorkService) {
 		super();
-		this.typeofworkService = typeofworkService;
+		this.typeOfWorkService = typeOfWorkService;
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<Typeofwork>> getAll() {
-		return this.typeofworkService.getAll();
+	public DataResult<List<TypeOfWork>> getAll() {
+		return this.typeOfWorkService.getAll();
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody Typeofwork typeofwork) {
-		return this.typeofworkService.add(typeofwork);
+	public Result add(@RequestBody TypeOfWork typeOfWork) {
+		return this.typeOfWorkService.add(typeOfWork);
 	}
 }

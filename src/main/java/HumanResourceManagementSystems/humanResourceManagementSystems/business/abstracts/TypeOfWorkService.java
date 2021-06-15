@@ -4,13 +4,13 @@ import java.util.List;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Typeofwork;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.TypeOfWork;
 
-public interface TypeofworkService {
+public interface TypeOfWorkService {
 
-	DataResult<List<Typeofwork>> getAll();
+	DataResult<List<TypeOfWork>> getAll();
 
-	Result add(Typeofwork typeofwork);	
+	Result add(TypeOfWork typeOfWork);	
 
-	DataResult<Typeofwork> getWorkByTitle(String title);
+	DataResult<TypeOfWork> getWorkByTitle(String title);
 }

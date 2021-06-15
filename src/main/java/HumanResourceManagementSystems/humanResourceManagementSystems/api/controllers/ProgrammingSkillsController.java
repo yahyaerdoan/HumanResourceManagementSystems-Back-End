@@ -40,7 +40,7 @@ public class ProgrammingSkillsController {
 	}
 
 	@GetMapping("/getAllByJobseekerId")
-	public DataResult<List<ProgrammingSkill>> getAllByJobseekerId(@RequestParam int id) {
-		return this.programmingSkillService.getAllByJobseekerId(id);
+	public DataResult<List<ProgrammingSkill>> getAllByJobSeekerId(@RequestParam int id) {
+		return this.programmingSkillService.getAllByJobSeekerId(id);
 	}
 }

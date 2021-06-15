@@ -12,7 +12,7 @@ public interface SchoolService {
 
 	DataResult<School> getById(int id);
 
-	DataResult<List<School>> getAllByJobseekerIdOrderByEndAtDesc(int id);
+	DataResult<List<School>> getAllByJobSeekerIdOrderByEndAtDesc(int id);
 
-	DataResult<List<School>> getAllByJobseekerId(int id);
+	DataResult<List<School>> getAllByJobSeekerId(int id);
 }

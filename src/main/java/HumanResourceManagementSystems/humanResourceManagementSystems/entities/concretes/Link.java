@@ -34,6 +34,6 @@ public class Link extends Base {
 	private String url;
 
 	@ManyToOne()
-	@JoinColumn(name = "jobseekerId")
-	private Jobseeker jobseeker;
+	@JoinColumn(name = "jobSeekerId")
+	private JobSeeker jobSeeker;
 }

@@ -33,5 +33,5 @@ public class Image extends Base {
 
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "jobseekerId", referencedColumnName = "userId")
-	private Jobseeker jobseeker;
+	private JobSeeker jobSeeker;
 }

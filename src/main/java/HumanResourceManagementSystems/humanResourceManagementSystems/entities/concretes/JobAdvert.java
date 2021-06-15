@@ -63,7 +63,7 @@ public class JobAdvert extends Base {
 
 	@ManyToOne
 	@JoinColumn(name = "typeOfWorkId")
-	private Typeofwork typeofwork;
+	private TypeOfWork typeOfWork;
 
 	@ManyToOne
 	@JoinColumn(name = "employerId")

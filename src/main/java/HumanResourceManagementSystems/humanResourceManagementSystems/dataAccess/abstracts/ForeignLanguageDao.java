@@ -10,5 +10,5 @@ public interface ForeignLanguageDao extends JpaRepository<ForeignLanguage, Integ
 
 	ForeignLanguage getById(int id);
 
-	List<ForeignLanguage> getAllByJobseekerId(int id);
+	List<ForeignLanguage> getAllByJobSeekerId(int id);
 }

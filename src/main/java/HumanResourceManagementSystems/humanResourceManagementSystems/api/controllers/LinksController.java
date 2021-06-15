@@ -40,7 +40,7 @@ public class LinksController {
 	}
 
 	@GetMapping("/getAllByJobseekerId")
-	public DataResult<List<Link>> getAllByJobseekerId(@RequestParam int id) {
-		return this.linkService.getAllByJobseekerId(id);
+	public DataResult<List<Link>> getAllByJobSeekerId(@RequestParam int id) {
+		return this.linkService.getAllByJobSeekerId(id);
 	}
 }

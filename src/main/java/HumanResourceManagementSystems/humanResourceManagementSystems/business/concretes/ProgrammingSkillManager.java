@@ -36,8 +36,8 @@ public class ProgrammingSkillManager implements ProgrammingSkillService {
 	}
 
 	@Override
-	public DataResult<List<ProgrammingSkill>> getAllByJobseekerId(int id) {
-		return new SuccessDataResult<List<ProgrammingSkill>>(this.programmingSkillDao.getAllByJobseekerId(id));
+	public DataResult<List<ProgrammingSkill>> getAllByJobSeekerId(int id) {
+		return new SuccessDataResult<List<ProgrammingSkill>>(this.programmingSkillDao.getAllByJobSeekerId(id));
 	}
 
 }

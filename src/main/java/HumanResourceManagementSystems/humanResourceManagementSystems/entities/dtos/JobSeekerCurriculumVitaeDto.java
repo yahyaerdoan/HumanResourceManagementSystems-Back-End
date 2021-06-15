@@ -6,14 +6,14 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Experience;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.ForeignLanguage;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Image;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobSeeker;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Link;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.ProgrammingSkill;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.School;
 
 public class JobSeekerCurriculumVitaeDto {
 
-	public Jobseeker jobseeker;
+	public JobSeeker jobSeeker;
 	
 	public List<School> schools;
 	

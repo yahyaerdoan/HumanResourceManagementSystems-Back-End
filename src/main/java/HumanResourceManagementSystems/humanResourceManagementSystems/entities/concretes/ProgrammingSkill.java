@@ -31,6 +31,6 @@ public class ProgrammingSkill extends Base {
 	private String skillName;
 
 	@ManyToOne()
-	@JoinColumn(name = "jobseekerId")
-	private Jobseeker jobseeker;
+	@JoinColumn(name = "jobSeekerId")
+	private JobSeeker jobSeeker;
 }

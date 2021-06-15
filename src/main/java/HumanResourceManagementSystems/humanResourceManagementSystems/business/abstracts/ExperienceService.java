@@ -12,7 +12,7 @@ public interface ExperienceService {
 
 	DataResult<Experience> getById(int id);
 
-	DataResult<List<Experience>> getAllByJobseekerIdOrderByEndAtDesc(int id);
+	DataResult<List<Experience>> getAllByJobSeekerIdOrderByEndAtDesc(int id);
 
-	DataResult<List<Experience>> getAllByJobseekerId(int id);
+	DataResult<List<Experience>> getAllByJobSeekerId(int id);
 }

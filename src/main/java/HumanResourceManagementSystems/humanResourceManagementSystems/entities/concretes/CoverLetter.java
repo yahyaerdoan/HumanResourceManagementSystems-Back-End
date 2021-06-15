@@ -31,6 +31,6 @@ public class CoverLetter extends Base {
 	private String content;
 
 	@ManyToOne()
-	@JoinColumn(name = "jobseekerId")
-	private Jobseeker jobseeker;
+	@JoinColumn(name = "jobSeekerId")
+	private JobSeeker jobSeeker;
 }

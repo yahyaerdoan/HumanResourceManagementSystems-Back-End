@@ -8,5 +8,5 @@ public interface ImageDao extends JpaRepository<Image, Integer> {
 
 	Image getById(int id);
 
-	Image getByJobseekerId(int id);
+	Image getByJobSeekerId(int id);
 }

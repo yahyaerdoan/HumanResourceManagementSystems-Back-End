@@ -42,6 +42,6 @@ public class School extends Base {
 	private LocalDate endAt;
 	
 	@ManyToOne()
-	@JoinColumn(name = "jobseekerId")
-	private Jobseeker jobseeker;
+	@JoinColumn(name = "jobSeekerId")
+	private JobSeeker jobSeeker;
 }

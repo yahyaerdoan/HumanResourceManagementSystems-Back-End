@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.ImageService;
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobseekerService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobSeekerService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Image;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobSeeker;
 
 @CrossOrigin
 @RestController
@@ -22,20 +22,20 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 public class ImagesController {
 
 	private ImageService imageService;
-	private JobseekerService jobseekerService;
+	private JobSeekerService jobSeekerService;
 
 	@Autowired
-	public ImagesController(ImageService imageService, JobseekerService jobseekerService) {
+	public ImagesController(ImageService imageService, JobSeekerService jobSeekerService) {
 		super();
 		this.imageService = imageService;
-		this.jobseekerService = jobseekerService;
+		this.jobSeekerService = jobSeekerService;
 	}
 
 	@PostMapping(value = "/add")
 	public Result add(@RequestParam(value = "id") int id, @RequestParam(value = "imageFile") MultipartFile imageFile) {
-		Jobseeker jobseeker = this.jobseekerService.getById(id).getData();
+		JobSeeker jobSeeker = this.jobSeekerService.getById(id).getData();
 		Image image = new Image();
-		image.setJobseeker(jobseeker);
+		image.setJobSeeker(jobSeeker);
 		return this.imageService.add(image, imageFile);
 	}
 
@@ -45,7 +45,7 @@ public class ImagesController {
 	}
 
 	@GetMapping("/getByJobseekerId")
-	public DataResult<Image> getByJobseekerId(@RequestParam int id) {
-		return this.imageService.getByJobseekerId(id);
+	public DataResult<Image> getByJobSeekerId(@RequestParam int id) {
+		return this.imageService.getByJobSeekerId(id);
 	}
 }

@@ -12,5 +12,5 @@ public interface ImageService {
 
 	DataResult<Image> getById(int id);
 
-	DataResult<Image> getByJobseekerId(int id);
+	DataResult<Image> getByJobSeekerId(int id);
 }

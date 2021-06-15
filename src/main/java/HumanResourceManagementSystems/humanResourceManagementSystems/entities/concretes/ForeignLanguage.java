@@ -38,6 +38,6 @@ public class ForeignLanguage extends Base {
 	private int level;	
 
 	@ManyToOne()
-	@JoinColumn(name = "jobseekerId")
-	private Jobseeker jobseeker;
+	@JoinColumn(name = "jobSeekerId")
+	private JobSeeker jobSeeker;
 }

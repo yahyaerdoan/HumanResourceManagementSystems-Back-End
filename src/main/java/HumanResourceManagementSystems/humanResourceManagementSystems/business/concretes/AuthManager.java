@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.AuthService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.EmployerService;
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobseekerService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobSeekerService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.UserService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.VerificationCodeService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.adapters.ValidationService;
@@ -15,7 +15,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.verification.VerificationService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Employer;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobSeeker;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.VerificationCode;
 
 @Service
@@ -23,19 +23,19 @@ public class AuthManager implements AuthService {
 
 	private UserService userService;
 	private EmployerService employerService;
-	private JobseekerService jobseekerService;
+	private JobSeekerService jobSeekerService;
 	private VerificationService verificationService;
 	private ValidationService validationService;
 	private VerificationCodeService verificationCodeService;
 
 	@Autowired
-	public AuthManager(UserService userService, EmployerService employerService, JobseekerService jobseekerService,
+	public AuthManager(UserService userService, EmployerService employerService, JobSeekerService jobSeekerService,
 			VerificationService verificationService, ValidationService validationService,
 			VerificationCodeService verificationCodeService) {
 		super();
 		this.userService = userService;
 		this.employerService = employerService;
-		this.jobseekerService = jobseekerService;
+		this.jobSeekerService = jobSeekerService;
 		this.verificationService = verificationService;
 		this.validationService = validationService;
 		this.verificationCodeService = verificationCodeService;
@@ -72,31 +72,31 @@ public class AuthManager implements AuthService {
 	}
 
 	@Override
-	public Result registerJobseeker(Jobseeker jobseeker, String confirmPassword) {
+	public Result registerJobSeeker(JobSeeker jobSeeker, String confirmPassword) {
 
-		if (checkIfRealPerson(Long.parseLong(jobseeker.getNationalityId()), jobseeker.getFirstName(),
-				jobseeker.getLastName(), jobseeker.getDateOfBirth().getYear()) == false) {
+		if (checkIfRealPerson(Long.parseLong(jobSeeker.getNationalityId()), jobSeeker.getFirstName(),
+				jobSeeker.getLastName(), jobSeeker.getDateOfBirth().getYear()) == false) {
 			return new ErrorResult("TCKN doğrulanamadı.");
 		}
 
-		if (!checkIfNullInfoForJobseeker(jobseeker, confirmPassword)) {
+		if (!checkIfNullInfoForJobseeker(jobSeeker, confirmPassword)) {
 
 			return new ErrorResult("Eksik bilgi girdiniz. lütfen bütün alanları doldurun.");
 		}
 
-		if (!checkIfExistsTcNo(jobseeker.getNationalityId())) {
+		if (!checkIfExistsTcNo(jobSeeker.getNationalityId())) {
 
-			return new ErrorResult(jobseeker.getNationalityId() + " zaten var.");
+			return new ErrorResult(jobSeeker.getNationalityId() + " zaten var.");
 		}
 
-		if (!checkIfEmailExists(jobseeker.getEmailAddress())) {
+		if (!checkIfEmailExists(jobSeeker.getEmailAddress())) {
 
-			return new ErrorResult(jobseeker.getEmailAddress() + " zaten var.");
+			return new ErrorResult(jobSeeker.getEmailAddress() + " zaten var.");
 		}
 
-		jobseekerService.add(jobseeker);
+		jobSeekerService.add(jobSeeker);
 		String code = verificationService.sendCode();
-		verificationCodeRecord(code, jobseeker.getId(), jobseeker.getEmailAddress());
+		verificationCodeRecord(code, jobSeeker.getId(), jobSeeker.getEmailAddress());
 		return new SuccessResult("Kayıt başarıyla tamamlandı.");
 	}
 
@@ -129,13 +129,13 @@ public class AuthManager implements AuthService {
 
 	// Validation for employer register ---END---
 
-	// Validation for jobseeker register ---START---
+	// Validation for jobSeeker register ---START---
 
-	private boolean checkIfNullInfoForJobseeker(Jobseeker jobseeker, String confirmPassword) {
+	private boolean checkIfNullInfoForJobseeker(JobSeeker jobSeeker, String confirmPassword) {
 
-		if (jobseeker.getFirstName() != null && jobseeker.getLastName() != null && jobseeker.getNationalityId() != null
-				&& jobseeker.getDateOfBirth() != null && jobseeker.getPassword() != null
-				&& jobseeker.getEmailAddress() != null && confirmPassword != null) {
+		if (jobSeeker.getFirstName() != null && jobSeeker.getLastName() != null && jobSeeker.getNationalityId() != null
+				&& jobSeeker.getDateOfBirth() != null && jobSeeker.getPassword() != null
+				&& jobSeeker.getEmailAddress() != null && confirmPassword != null) {
 
 			return true;
 
@@ -146,7 +146,7 @@ public class AuthManager implements AuthService {
 
 	private boolean checkIfExistsTcNo(String nationalityId) {
 
-		if (this.jobseekerService.getJobseekerByNationalId(nationalityId).getData() == null) {
+		if (this.jobSeekerService.getJobSeekerByNationalId(nationalityId).getData() == null) {
 			return true;
 		}
 		return false;
@@ -160,7 +160,7 @@ public class AuthManager implements AuthService {
 		return false;
 	}
 
-	// Validation for jobseeker register ---END---
+	// Validation for jobSeeker register ---END---
 
 	// Common Validation
 

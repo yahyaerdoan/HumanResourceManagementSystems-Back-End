@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "systemworkers")
 @PrimaryKeyJoinColumn(name = "userId")
 @EqualsAndHashCode(callSuper = true)
-public class Systemworker extends User {
+public class SystemWorker extends User {
 
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)

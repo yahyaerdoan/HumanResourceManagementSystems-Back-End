@@ -36,13 +36,13 @@ public class ExperienceManager implements ExperienceService {
 	}
 
 	@Override
-	public DataResult<List<Experience>> getAllByJobseekerIdOrderByEndAtDesc(int id) {
-		return new SuccessDataResult<List<Experience>>(this.experienceDao.getAllByJobseekerIdOrderByEndAtDesc(id));
+	public DataResult<List<Experience>> getAllByJobSeekerIdOrderByEndAtDesc(int id) {
+		return new SuccessDataResult<List<Experience>>(this.experienceDao.getAllByJobSeekerIdOrderByEndAtDesc(id));
 	}
 
 	@Override
-	public DataResult<List<Experience>> getAllByJobseekerId(int id) {
-		return new SuccessDataResult<List<Experience>>(this.experienceDao.getAllByJobseekerId(id));
+	public DataResult<List<Experience>> getAllByJobSeekerId(int id) {
+		return new SuccessDataResult<List<Experience>>(this.experienceDao.getAllByJobSeekerId(id));
 	}
 
 }

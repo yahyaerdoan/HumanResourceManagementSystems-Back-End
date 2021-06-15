@@ -10,7 +10,7 @@ public interface ExperienceDao extends JpaRepository<Experience, Integer> {
 
 	Experience getById(int id);
 
-	List<Experience> getAllByJobseekerIdOrderByEndAtDesc(int id);
+	List<Experience> getAllByJobSeekerIdOrderByEndAtDesc(int id);
 
-	List<Experience> getAllByJobseekerId(int id);
+	List<Experience> getAllByJobSeekerId(int id);
 }

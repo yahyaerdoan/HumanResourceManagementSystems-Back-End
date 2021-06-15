@@ -5,35 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.SystemworkerService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.SystemWorkerService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
-import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.SystemworkerDao;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Systemworker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.SystemWorkerDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.SystemWorker;
 
 @Service
-public class SystemworkerManager implements SystemworkerService {
+public class SystemWorkerManager implements SystemWorkerService {
 
-	private SystemworkerDao systemworkerDao;
+	private SystemWorkerDao systemWorkerDao;
 
 	@Autowired
-	public SystemworkerManager(SystemworkerDao systemworkerDao) {
+	public SystemWorkerManager(SystemWorkerDao systemWorkerDao) {
 		super();
-		this.systemworkerDao = systemworkerDao;
+		this.systemWorkerDao = systemWorkerDao;
 	}
 
 	@Override
-	public DataResult<List<Systemworker>> getAll() {
+	public DataResult<List<SystemWorker>> getAll() {
 
-		return new SuccessDataResult<List<Systemworker>>(this.systemworkerDao.findAll(),
+		return new SuccessDataResult<List<SystemWorker>>(this.systemWorkerDao.findAll(),
 				"Sistem çalışanları listelendi.");
 	}
 
 	@Override
-	public Result add(Systemworker systemworker) {
-		this.systemworkerDao.save(systemworker);
+	public Result add(SystemWorker systemWorker) {
+		this.systemWorkerDao.save(systemWorker);
 		return new SuccessResult("Sistem çalışını eklendi.");
 	}
 

@@ -11,42 +11,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobseekerService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobSeekerService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobSeeker;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobSeekerCurriculumVitaeDto;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/jobseekers")
-public class JobseekersController {
+public class JobSeekersController {
 
-	private JobseekerService jobseekerService;
+	private JobSeekerService jobSeekerService;
 
 	@Autowired
-	public JobseekersController(JobseekerService jobseekerService) {
+	public JobSeekersController(JobSeekerService jobSeekerService) {
 		super();
-		this.jobseekerService = jobseekerService;
+		this.jobSeekerService = jobSeekerService;
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody Jobseeker jobseeker) {
-		return this.jobseekerService.add(jobseeker);
+	public Result add(@RequestBody JobSeeker jobSeeker) {
+		return this.jobSeekerService.add(jobSeeker);
 	}
 
 	@GetMapping("/getById")
-	public DataResult<Jobseeker> getById(@RequestParam("id") int id) {
-		return this.jobseekerService.getById(id);
+	public DataResult<JobSeeker> getById(@RequestParam("id") int id) {
+		return this.jobSeekerService.getById(id);
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<Jobseeker>> getAll() {
-		return this.jobseekerService.getAll();
+	public DataResult<List<JobSeeker>> getAll() {
+		return this.jobSeekerService.getAll();
 	}
 
 	@GetMapping("/getJobSeekerCurriculumVitaeDtosById")
 	public DataResult<JobSeekerCurriculumVitaeDto> getJobSeekerCurriculumVitaeDtosById(@RequestParam int id) {
-		return this.jobseekerService.getJobSeekerCurriculumVitaeDtosById(id);
+		return this.jobSeekerService.getJobSeekerCurriculumVitaeDtosById(id);
 	}
 }

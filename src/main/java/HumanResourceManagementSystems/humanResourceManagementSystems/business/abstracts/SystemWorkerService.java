@@ -4,11 +4,11 @@ import java.util.List;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Systemworker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.SystemWorker;
 
-public interface SystemworkerService {
+public interface SystemWorkerService {
 
-	DataResult<List<Systemworker>> getAll();
+	DataResult<List<SystemWorker>> getAll();
 
-	Result add(Systemworker systemworker);
+	Result add(SystemWorker systemWorker);
 }

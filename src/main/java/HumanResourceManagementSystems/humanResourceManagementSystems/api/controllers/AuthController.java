@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.AuthService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Employer;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Jobseeker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobSeeker;
 
 @CrossOrigin
 @RestController
@@ -32,7 +32,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/registerJobseeker")
-	public Result registerJobseeker(@RequestBody Jobseeker jobseeker, @RequestParam String confirmPassword) {
-		return this.authService.registerJobseeker(jobseeker, confirmPassword);
+	public Result registerJobseeker(@RequestBody JobSeeker jobSeeker, @RequestParam String confirmPassword) {
+		return this.authService.registerJobSeeker(jobSeeker, confirmPassword);
 	}
 }

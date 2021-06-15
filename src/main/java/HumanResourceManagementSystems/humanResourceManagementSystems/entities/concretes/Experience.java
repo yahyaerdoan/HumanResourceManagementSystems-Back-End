@@ -43,5 +43,5 @@ public class Experience extends Base {
 
 	@ManyToOne()
 	@JoinColumn(name = "jobseekerId")
-	private Jobseeker jobseeker;
+	private JobSeeker jobSeeker;
 }

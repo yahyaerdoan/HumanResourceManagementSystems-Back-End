@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "jobseekers")
 @PrimaryKeyJoinColumn(name = "userId")
 @EqualsAndHashCode(callSuper = true)
-public class Jobseeker extends User {
+public class JobSeeker extends User {
 
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,37 +56,37 @@ public class Jobseeker extends User {
 	private boolean isVerified = false;
 
 	
-	@OneToMany(mappedBy = "jobseeker")
+	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<School> schools;
 
 	
-	@OneToMany(mappedBy = "jobseeker")
+	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<Experience> experiences;
 
 	
-	@OneToMany(mappedBy = "jobseeker")
+	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<ForeignLanguage> foreignLanguages;
 
 	
-	@OneToOne(mappedBy = "jobseeker", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "jobSeeker", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Image images;
 
 	
-	@OneToMany(mappedBy = "jobseeker")
+	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<Link> links;
 
 	
-	@OneToMany(mappedBy = "jobseeker")
+	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<ProgrammingSkill> programmingSkills;
 
 	
-	@OneToMany(mappedBy = "jobseeker")
+	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<CoverLetter> coverLetters;
 }

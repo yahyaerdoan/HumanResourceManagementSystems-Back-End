@@ -10,5 +10,5 @@ public interface ProgrammingSkillDao extends JpaRepository<ProgrammingSkill, Int
 
 	ProgrammingSkill getById(int id);
 
-	List<ProgrammingSkill> getAllByJobseekerId(int id);
+	List<ProgrammingSkill> getAllByJobSeekerId(int id);
 }

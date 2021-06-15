@@ -10,30 +10,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.SystemworkerService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.SystemWorkerService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.Systemworker;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.SystemWorker;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/systemworkers")
-public class SystemworkersController {
+public class SystemWorkersController {
 
-	private SystemworkerService systemworkerService;
+	private SystemWorkerService systemWorkerService;
 
 	@Autowired
-	public SystemworkersController(SystemworkerService systemworkerService) {
+	public SystemWorkersController(SystemWorkerService systemWorkerService) {
 		super();
-		this.systemworkerService = systemworkerService;
+		this.systemWorkerService = systemWorkerService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Systemworker>> getAll(){
-		return this.systemworkerService.getAll();
+	public DataResult<List<SystemWorker>> getAll(){
+		return this.systemWorkerService.getAll();
 	}
 	@PostMapping("/add")
-	public Result add(@RequestBody Systemworker systemworker) {
-		return this.systemworkerService.add(systemworker);		
+	public Result add(@RequestBody SystemWorker systemWorker) {
+		return this.systemWorkerService.add(systemWorker);		
 	}
 }

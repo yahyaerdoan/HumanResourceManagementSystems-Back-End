@@ -40,7 +40,7 @@ public class ForeignLanguagesController {
 	}
 
 	@GetMapping("/getAllByJobseekerId")
-	public DataResult<List<ForeignLanguage>> getAllByJobseekerId(@RequestParam int id) {
-		return this.foreignLanguageService.getAllByJobseekerId(id);
+	public DataResult<List<ForeignLanguage>> getAllByJobSeekerId(@RequestParam int id) {
+		return this.foreignLanguageService.getAllByJobSeekerId(id);
 	}
 }

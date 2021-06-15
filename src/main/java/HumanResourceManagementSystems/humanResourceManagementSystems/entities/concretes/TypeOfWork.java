@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "typeofworks")
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
-public class Typeofwork extends Base {
+public class TypeOfWork extends Base {
 
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class Typeofwork extends Base {
 	@Column(name = "description")
 	private String description;
 
-	@OneToMany(mappedBy = "typeofwork") // jobAdverts tablosu typeofwork tablosu ile ilişkilendirilmiş durumda
+	@OneToMany(mappedBy = "typeOfWork") // jobAdverts tablosu typeofwork tablosu ile ilişkilendirilmiş durumda
 	private List<JobAdvert> jobAdverts;
 
 }

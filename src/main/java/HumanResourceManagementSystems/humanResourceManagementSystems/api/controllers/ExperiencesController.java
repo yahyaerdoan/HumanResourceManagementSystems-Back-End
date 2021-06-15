@@ -40,12 +40,12 @@ public class ExperiencesController {
 	}
 
 	@GetMapping("/getAllByJobseekerIdOrderByEndAtDesc")
-	public DataResult<List<Experience>> getAllByJobseekerIdOrderByEndAtDesc(@RequestParam("id") int id) {
-		return this.experienceService.getAllByJobseekerIdOrderByEndAtDesc(id);
+	public DataResult<List<Experience>> getAllByJobSeekerIdOrderByEndAtDesc(@RequestParam("id") int id) {
+		return this.experienceService.getAllByJobSeekerIdOrderByEndAtDesc(id);
 	}
 
 	@GetMapping("/getAllByJobseekerId")
-	public DataResult<List<Experience>> getAllByJobseekerId(@RequestParam int id) {
-		return this.experienceService.getAllByJobseekerId(id);
+	public DataResult<List<Experience>> getAllByJobSeekerId(@RequestParam int id) {
+		return this.experienceService.getAllByJobSeekerId(id);
 	}
 }

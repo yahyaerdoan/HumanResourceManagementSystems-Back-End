@@ -12,5 +12,5 @@ public interface LinkService {
 
 	DataResult<Link> getById(int id);
 
-	DataResult<List<Link>> getAllByJobseekerId(int id);
+	DataResult<List<Link>> getAllByJobSeekerId(int id);
 }
