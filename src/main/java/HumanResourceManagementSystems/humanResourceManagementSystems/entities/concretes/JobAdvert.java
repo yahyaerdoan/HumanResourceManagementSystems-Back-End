@@ -58,7 +58,12 @@ public class JobAdvert extends Base {
 	
 	@Column(name = "isOpen")
 	private boolean isOpen;
-
+	
+	@Column(name = "typeOfWorkplace")
+	private String typeOfWorkplace;
+	
+	@Column(name = "workingTime")
+	private String workingTime;
 	
 
 	@ManyToOne
