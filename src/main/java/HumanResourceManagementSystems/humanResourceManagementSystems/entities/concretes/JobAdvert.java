@@ -84,6 +84,6 @@ public class JobAdvert extends Base {
 	
 	@ManyToOne
 	@JoinColumn(name = "workingTimeId")
-	private TypeOfWorkplace workingTime;
+	private WorkingTime workingTime;
 
 }
