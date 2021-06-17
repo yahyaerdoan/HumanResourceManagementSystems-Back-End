@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.WorkingTimeService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.WorkingTimeService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;

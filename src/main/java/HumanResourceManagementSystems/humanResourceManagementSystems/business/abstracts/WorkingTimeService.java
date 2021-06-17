@@ -1,4 +1,4 @@
-package HumanResourceManagementSystems.humanResourceManagementSystems.business;
+package HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts;
 
 import java.util.List;
 
