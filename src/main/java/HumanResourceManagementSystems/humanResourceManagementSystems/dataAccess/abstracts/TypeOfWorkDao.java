@@ -8,5 +8,5 @@ public interface TypeOfWorkDao extends JpaRepository<TypeOfWork, Integer> {
 
 	TypeOfWork findByTitle(String title);
 
-	TypeOfWork getById(String id);
+	TypeOfWork getById(int id);
 }

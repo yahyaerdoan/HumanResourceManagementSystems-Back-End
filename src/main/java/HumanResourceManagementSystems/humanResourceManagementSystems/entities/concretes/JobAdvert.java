@@ -37,6 +37,12 @@ public class JobAdvert extends Base {
 
 	// @Column(name = "cityId")
 	// private int cityId;
+	
+	// @Column(name = "typeOfWorkplaceId")
+	// private int typeOfWorkplaceId;
+	
+	// @Column(name = "workingTimeId")
+	// private int workingTimeId;
 
 	@Column(name = "description")
 	private String description;
@@ -59,13 +65,7 @@ public class JobAdvert extends Base {
 	@Column(name = "isOpen")
 	private boolean isOpen;
 	
-	@Column(name = "typeOfWorkplace")
-	private String typeOfWorkplace;
 	
-	@Column(name = "workingTime")
-	private String workingTime;
-	
-
 	@ManyToOne
 	@JoinColumn(name = "typeOfWorkId")
 	private TypeOfWork typeOfWork;
@@ -77,5 +77,13 @@ public class JobAdvert extends Base {
 	@ManyToOne
 	@JoinColumn(name = "cityId")
 	private City city;
+	
+	@ManyToOne
+	@JoinColumn(name = "typeOfWorkplaceId")
+	private TypeOfWorkplace typeOfWorkplace;
+	
+	@ManyToOne
+	@JoinColumn(name = "workingTimeId")
+	private TypeOfWorkplace workingTime;
 
 }
