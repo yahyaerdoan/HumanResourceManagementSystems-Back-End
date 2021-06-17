@@ -14,7 +14,6 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.business.ab
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.TypeOfWorkplace;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.WorkingTime;
 
 @CrossOrigin
 @RestController
