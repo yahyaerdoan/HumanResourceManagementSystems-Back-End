@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.TypeOfWorkplaceService;
+import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.WorkingTimeService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.TypeOfWorkplace;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.WorkingTime;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/typeofworkplaces")
-public class TypeOfWorkplacesController {
+@RequestMapping("/api/workingtimes")
+public class WorkingTimesController {
 
-	private TypeOfWorkplaceService typeOfWorkplaceService;
+	private WorkingTimeService workingTimesService;
 
 	@Autowired
-	public TypeOfWorkplacesController(TypeOfWorkplaceService typeOfWorkplaceService) {
+	public WorkingTimesController(WorkingTimeService workingTimesService) {
 		super();
-		this.typeOfWorkplaceService = typeOfWorkplaceService;
+		this.workingTimesService = workingTimesService;
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody TypeOfWorkplace typeOfWorkplace) {
-		return this.typeOfWorkplaceService.add(typeOfWorkplace);
+	public Result add(@RequestBody WorkingTime workingTime) {
+		return this.workingTimesService.add(workingTime);
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<TypeOfWorkplace>> getAll() {
-		return this.typeOfWorkplaceService.getAll();
+	public DataResult<List<WorkingTime>> getAll() {
+		return this.workingTimesService.getAll();
 	}
+
 }
