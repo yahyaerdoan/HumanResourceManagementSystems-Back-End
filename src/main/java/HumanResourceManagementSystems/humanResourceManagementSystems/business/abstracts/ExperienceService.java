@@ -10,6 +10,12 @@ public interface ExperienceService {
 
 	Result add(Experience experience);
 
+	Result delete(int id);
+
+	Result update(Experience experience);
+
+	DataResult<List<Experience>> getAll();
+
 	DataResult<Experience> getById(int id);
 
 	DataResult<List<Experience>> getAllByJobSeekerIdOrderByEndAtDesc(int id);

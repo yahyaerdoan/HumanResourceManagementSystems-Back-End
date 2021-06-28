@@ -34,12 +34,27 @@ public class ProgrammingSkillsController {
 		return this.programmingSkillService.add(programmingSkill);
 	}
 
+	@PostMapping("/delete")
+	public Result delete(@RequestParam("id") int id) {
+		return this.programmingSkillService.delete(id);
+	}
+
+	@PostMapping("/update")
+	public Result update(@RequestBody ProgrammingSkill programmingSkill) {
+		return this.programmingSkillService.update(programmingSkill);
+	}
+
+	@GetMapping("/getAll")
+	public DataResult<List<ProgrammingSkill>> getAll() {
+		return this.programmingSkillService.getAll();
+	}
+
 	@GetMapping("/getById")
 	public DataResult<ProgrammingSkill> getById(@RequestParam("id") int id) {
 		return this.programmingSkillService.getById(id);
 	}
 
-	@GetMapping("/getAllByJobseekerId")
+	@GetMapping("/getAllByJobSeekerId")
 	public DataResult<List<ProgrammingSkill>> getAllByJobSeekerId(@RequestParam int id) {
 		return this.programmingSkillService.getAllByJobSeekerId(id);
 	}

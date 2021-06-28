@@ -10,6 +10,12 @@ public interface ForeignLanguageService {
 
 	Result add(ForeignLanguage foreignLanguage);
 
+	Result delete(int id);
+
+	Result update(ForeignLanguage foreignLanguage);
+
+	DataResult<List<ForeignLanguage>> getAll();
+
 	DataResult<ForeignLanguage> getById(int id);
 
 	DataResult<List<ForeignLanguage>> getAllByJobSeekerId(int id);

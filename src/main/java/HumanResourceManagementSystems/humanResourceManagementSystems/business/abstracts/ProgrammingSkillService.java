@@ -10,6 +10,12 @@ public interface ProgrammingSkillService {
 
 	Result add(ProgrammingSkill programmingSkill);
 
+	Result delete(int id);
+
+	Result update(ProgrammingSkill programmingSkill);
+
+	DataResult<List<ProgrammingSkill>> getAll();
+
 	DataResult<ProgrammingSkill> getById(int id);
 
 	DataResult<List<ProgrammingSkill>> getAllByJobSeekerId(int id);

@@ -35,7 +35,6 @@ public class SchoolManager implements SchoolService {
 		return new SuccessDataResult<School>(this.schoolDao.getById(id));
 	}
 
-
 	@Override
 	public DataResult<List<School>> getAllByJobSeekerIdOrderByEndAtDesc(int id) {
 		return new SuccessDataResult<List<School>>(this.schoolDao.getAllByJobSeekerId(id));
@@ -44,6 +43,24 @@ public class SchoolManager implements SchoolService {
 	@Override
 	public DataResult<List<School>> getAllByJobSeekerId(int id) {
 		return new SuccessDataResult<List<School>>(this.schoolDao.getAllByJobSeekerIdOrderByEndAtDesc(id));
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.schoolDao.deleteById(id);
+		return new SuccessResult("Okul bilgileri silindi.");
+	}
+
+	@Override
+	public Result update(School school) {
+		this.schoolDao.save(school);
+		return new SuccessResult("Okul bilgileri güncellendi.");
+	}
+
+	@Override
+	public DataResult<List<School>> getAll() {
+
+		return new SuccessDataResult<List<School>>(this.schoolDao.findAll());
 	}
 
 }

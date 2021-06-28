@@ -40,4 +40,21 @@ public class ProgrammingSkillManager implements ProgrammingSkillService {
 		return new SuccessDataResult<List<ProgrammingSkill>>(this.programmingSkillDao.getAllByJobSeekerId(id));
 	}
 
+	@Override
+	public Result delete(int id) {
+		this.programmingSkillDao.deleteById(id);
+		return new SuccessResult("Programlama becerileri silindi.");
+	}
+
+	@Override
+	public Result update(ProgrammingSkill programmingSkill) {
+		this.programmingSkillDao.save(programmingSkill);
+		return new SuccessResult("Programlama becerileri güncellendi.");
+	}
+
+	@Override
+	public DataResult<List<ProgrammingSkill>> getAll() {
+		return new SuccessDataResult<List<ProgrammingSkill>>(this.programmingSkillDao.findAll());
+	}
+
 }

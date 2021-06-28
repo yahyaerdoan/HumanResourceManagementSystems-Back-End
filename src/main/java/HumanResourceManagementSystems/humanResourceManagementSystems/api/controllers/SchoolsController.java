@@ -34,6 +34,21 @@ public class SchoolsController {
 		return this.schoolService.add(school);
 	}
 
+	@PostMapping("/delete")
+	public Result delete(@RequestParam int id) {
+		return this.schoolService.delete(id);
+	}
+
+	@PostMapping("/update")
+	public Result update(@RequestBody School school) {
+		return this.schoolService.update(school);
+	}
+
+	@GetMapping("/getAll")
+	public DataResult<List<School>> getAll() {
+		return this.schoolService.getAll();
+	}
+
 	@GetMapping("/getById")
 	public DataResult<School> getById(@RequestParam int id) {
 		return this.schoolService.getById(id);

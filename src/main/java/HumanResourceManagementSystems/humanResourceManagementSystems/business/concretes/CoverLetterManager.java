@@ -1,5 +1,7 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,23 @@ public class CoverLetterManager implements CoverLetterService {
 	@Override
 	public DataResult<CoverLetter> getById(int id) {
 		return new SuccessDataResult<CoverLetter>(this.coverLetterDao.getById(id));
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.coverLetterDao.deleteById(id);
+		return new SuccessResult("Ön yazı silindi.");
+	}
+
+	@Override
+	public Result update(CoverLetter coverLetter) {
+		this.coverLetterDao.save(coverLetter);
+		return new SuccessResult("Ön yazı güncellendi.");
+	}
+
+	@Override
+	public DataResult<List<CoverLetter>> getAll() {
+		return new SuccessDataResult<List<CoverLetter>>(this.coverLetterDao.findAll());
 	}
 
 }

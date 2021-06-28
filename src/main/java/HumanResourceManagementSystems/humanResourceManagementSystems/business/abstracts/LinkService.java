@@ -10,6 +10,12 @@ public interface LinkService {
 
 	Result add(Link link);
 
+	Result delete(int id);
+
+	Result update(Link link);
+
+	DataResult<List<Link>> getAll();
+
 	DataResult<Link> getById(int id);
 
 	DataResult<List<Link>> getAllByJobSeekerId(int id);

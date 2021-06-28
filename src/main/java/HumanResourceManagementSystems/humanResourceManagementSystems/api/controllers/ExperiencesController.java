@@ -34,17 +34,32 @@ public class ExperiencesController {
 		return this.experienceService.add(experience);
 	}
 
+	@PostMapping("/delete")
+	public Result delete(@RequestParam("id") int id) {
+		return this.experienceService.delete(id);
+	}
+
+	@PostMapping("/update")
+	public Result update(@RequestBody Experience experience) {
+		return this.experienceService.update(experience);
+	}
+
+	@GetMapping("/getAll")
+	public DataResult<List<Experience>> getAll() {
+		return this.experienceService.getAll();
+	}
+
 	@GetMapping("/getById")
 	public DataResult<Experience> getById(@RequestParam int id) {
 		return this.experienceService.getById(id);
 	}
 
-	@GetMapping("/getAllByJobseekerIdOrderByEndAtDesc")
+	@GetMapping("/getAllByJobSeekerIdOrderByEndAtDesc")
 	public DataResult<List<Experience>> getAllByJobSeekerIdOrderByEndAtDesc(@RequestParam("id") int id) {
 		return this.experienceService.getAllByJobSeekerIdOrderByEndAtDesc(id);
 	}
 
-	@GetMapping("/getAllByJobseekerId")
+	@GetMapping("/getAllByJobSeekerId")
 	public DataResult<List<Experience>> getAllByJobSeekerId(@RequestParam int id) {
 		return this.experienceService.getAllByJobSeekerId(id);
 	}

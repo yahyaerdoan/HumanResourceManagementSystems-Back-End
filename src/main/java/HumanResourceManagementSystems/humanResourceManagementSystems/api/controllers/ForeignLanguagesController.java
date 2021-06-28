@@ -34,12 +34,27 @@ public class ForeignLanguagesController {
 		return this.foreignLanguageService.add(foreignLanguage);
 	}
 
+	@PostMapping("/delete")
+	public Result delete(@RequestParam("id") int id) {
+		return this.foreignLanguageService.delete(id);
+	}
+
+	@PostMapping("/update")
+	public Result update(@RequestBody ForeignLanguage foreignLanguage) {
+		return this.foreignLanguageService.update(foreignLanguage);
+	}
+
+	@GetMapping("/getall")
+	public DataResult<List<ForeignLanguage>> getAll() {
+		return this.foreignLanguageService.getAll();
+	}
+
 	@GetMapping("/getById")
 	public DataResult<ForeignLanguage> getById(@RequestParam("id") int id) {
 		return this.foreignLanguageService.getById(id);
 	}
 
-	@GetMapping("/getAllByJobseekerId")
+	@GetMapping("/getAllByJobSeekerId")
 	public DataResult<List<ForeignLanguage>> getAllByJobSeekerId(@RequestParam int id) {
 		return this.foreignLanguageService.getAllByJobSeekerId(id);
 	}

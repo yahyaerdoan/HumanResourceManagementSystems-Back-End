@@ -1,9 +1,12 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.api.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +40,21 @@ public class ImagesController {
 		Image image = new Image();
 		image.setJobSeeker(jobSeeker);
 		return this.imageService.add(image, imageFile);
+	}
+
+	@PostMapping("/delete")
+	public Result delete(@RequestParam("id") int id) {
+		return this.imageService.delete(id);
+	}
+
+	@PostMapping("/update")
+	public Result update(@RequestBody Image image) {
+		return this.imageService.update(image);
+	}
+
+	@GetMapping("/getall")
+	public DataResult<List<Image>> getAll() {
+		return this.imageService.getAll();
 	}
 
 	@GetMapping("/getById")

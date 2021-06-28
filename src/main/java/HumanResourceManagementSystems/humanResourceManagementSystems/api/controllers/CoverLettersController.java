@@ -1,5 +1,7 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.api.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,21 @@ public class CoverLettersController {
 	@PostMapping("/add")
 	public Result add(@RequestBody CoverLetter coverLetter) {
 		return this.coverLetterService.add(coverLetter);
+	}
+
+	@PostMapping("/delete")
+	public Result delete(@RequestParam("id") int id) {
+		return this.coverLetterService.delete(id);
+	}
+
+	@PostMapping("/update")
+	public Result update(@RequestBody CoverLetter coverLetter) {
+		return this.coverLetterService.update(coverLetter);
+	}
+
+	@GetMapping("/getall")
+	public DataResult<List<CoverLetter>> getAll() {
+		return this.coverLetterService.getAll();
 	}
 
 	@GetMapping("/getById")

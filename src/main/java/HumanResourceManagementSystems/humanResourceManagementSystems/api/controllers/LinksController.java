@@ -34,6 +34,21 @@ public class LinksController {
 		return this.linkService.add(link);
 	}
 
+	@PostMapping("/delete")
+	public Result delete(@RequestParam("id") int id) {
+		return this.linkService.delete(id);
+	}
+
+	@PostMapping("/update")
+	public Result update(@RequestBody Link link) {
+		return this.linkService.update(link);
+	}
+
+	@GetMapping("/getAll")
+	public DataResult<List<Link>> getAll() {
+		return this.linkService.getAll();
+	}
+
 	@GetMapping("/getById")
 	public DataResult<Link> getById(@RequestParam("id") int id) {
 		return this.linkService.getById(id);
