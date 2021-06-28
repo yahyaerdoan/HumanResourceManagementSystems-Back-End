@@ -17,7 +17,14 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.CoverLetterDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.ExperienceDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.ForeignLanguageDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.ImageDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.JobSeekerDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.LinkDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.ProgrammingSkillDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.SchoolDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobSeeker;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobSeekerCurriculumVitaeDto;
 
@@ -25,37 +32,23 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dt
 public class JobSeekerManager implements JobSeekerService {
 
 	private JobSeekerDao jobSeekerDao;
-	private SchoolService schoolService;
-	private ExperienceService experienceService;
-	private ForeignLanguageService foreignLanguageService;
-	private LinkService linkService;
-	private ProgrammingSkillService programmingSkillService;
-	private CoverLetterService coverLetterService;
-	private ImageService imageService;
 
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao, 
-			SchoolService schoolService, 
-			ExperienceService experienceService, 
-			ForeignLanguageService foreignLanguageService, 
-			LinkService linkService, 
-			ProgrammingSkillService programmingSkillService, 
-			CoverLetterService coverLetterService,
-			ImageService imageService) {
+	public JobSeekerManager(JobSeekerDao jobSeekerDao) {
 		super();
 		this.jobSeekerDao = jobSeekerDao;
-	}
-
-	@Override
-	public DataResult<List<JobSeeker>> getAll() {
-
-		return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.findAll(), "İş arayanlar listelendi.");
 	}
 
 	@Override
 	public Result add(JobSeeker jobSeeker) {
 		this.jobSeekerDao.save(jobSeeker);
 		return new SuccessResult("İş arayan eklendi.");
+	}
+
+	@Override
+	public DataResult<List<JobSeeker>> getAll() {
+
+		return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.findAll(), "İş arayanlar listelendi.");
 	}
 
 	@Override
