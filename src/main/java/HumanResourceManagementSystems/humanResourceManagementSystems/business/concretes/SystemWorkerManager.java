@@ -25,6 +25,24 @@ public class SystemWorkerManager implements SystemWorkerService {
 	}
 
 	@Override
+	public Result add(SystemWorker systemWorker) {
+		this.systemWorkerDao.save(systemWorker);
+		return new SuccessResult("Sistem çalışını eklendi.");
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.systemWorkerDao.deleteById(id);
+		return new SuccessResult("Sistem çalışanı silindi");
+	}
+
+	@Override
+	public Result update(SystemWorker systemWorker) {
+		this.systemWorkerDao.save(systemWorker);
+		return new SuccessResult("Sistem çalışanı güncellendi");
+	}
+
+	@Override
 	public DataResult<List<SystemWorker>> getAll() {
 
 		return new SuccessDataResult<List<SystemWorker>>(this.systemWorkerDao.findAll(),
@@ -32,9 +50,8 @@ public class SystemWorkerManager implements SystemWorkerService {
 	}
 
 	@Override
-	public Result add(SystemWorker systemWorker) {
-		this.systemWorkerDao.save(systemWorker);
-		return new SuccessResult("Sistem çalışını eklendi.");
+	public DataResult<SystemWorker> getById(int id) {
+		return new SuccessDataResult<SystemWorker>(this.systemWorkerDao.getById(id));
 	}
 
 }

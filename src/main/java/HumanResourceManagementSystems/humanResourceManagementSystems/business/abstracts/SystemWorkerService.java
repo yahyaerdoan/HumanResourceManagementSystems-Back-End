@@ -8,7 +8,14 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 
 public interface SystemWorkerService {
 
+	Result add(SystemWorker systemWorker);
+
+	Result delete(int id);
+
+	Result update(SystemWorker systemWorker);
+
+	DataResult<SystemWorker> getById(int id);
+
 	DataResult<List<SystemWorker>> getAll();
 
-	Result add(SystemWorker systemWorker);
 }
