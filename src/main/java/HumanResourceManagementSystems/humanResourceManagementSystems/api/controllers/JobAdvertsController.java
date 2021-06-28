@@ -14,6 +14,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.business.ab
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertAddDto;
 
 @CrossOrigin
 @RestController
@@ -30,8 +31,8 @@ public class JobAdvertsController {
 
 	@PostMapping("/add")
 
-	public Result add(@RequestBody JobAdvert jobAdvert) {
-		return this.jobAdvertService.add(jobAdvert);
+	public Result add(@RequestBody JobAdvertAddDto jobAdvertAddDto) {
+		return this.jobAdvertService.add(jobAdvertAddDto);
 	}
 	@GetMapping("/getbyid")
 	public DataResult<JobAdvert> getById(int id){

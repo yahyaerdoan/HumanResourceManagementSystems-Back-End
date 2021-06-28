@@ -1,5 +1,6 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.business.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +12,54 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessDataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.SuccessResult;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.CityDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.EmployerDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.JobAdvertDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.TypeOfWorkDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.TypeOfWorkplaceDao;
+import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.WorkingTimeDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertAddDto;
 
 @Service
 public class JobAdvertManager implements JobAdvertService {
 
+	private CityDao cityDao;
+	private EmployerDao employerDao;
 	private JobAdvertDao jobAdvertDao;
+	private TypeOfWorkDao typeOfWorkDao;
+	private WorkingTimeDao workingTimeDao;
+	private TypeOfWorkplaceDao typeOfWorkplaceDao;
 
 	@Autowired
-	public JobAdvertManager(JobAdvertDao jobAdvertDao) {
+	public JobAdvertManager(JobAdvertDao jobAdvertDao, CityDao cityDao, EmployerDao employerDao,
+			TypeOfWorkDao typeOfWorkDao, WorkingTimeDao workingTimeDao, TypeOfWorkplaceDao typeOfWorkplaceDao) {
 		super();
 		this.jobAdvertDao = jobAdvertDao;
+		this.cityDao = cityDao;
+		this.employerDao = employerDao;
+		this.typeOfWorkDao = typeOfWorkDao;
+		this.workingTimeDao = workingTimeDao;
+		this.typeOfWorkplaceDao = typeOfWorkplaceDao;
 	}
 
 	@Override
-	public Result add(JobAdvert jobAdvert) {
+	public Result add(JobAdvertAddDto jobAdvertAddDto) {
+		JobAdvert jobAdvert = new JobAdvert();
+		jobAdvert.setCity(this.cityDao.getById(jobAdvertAddDto.getCityId()));
+		jobAdvert.setEmployer(this.employerDao.getById(jobAdvertAddDto.getEmployerId()));
+		jobAdvert.setTypeOfWork(this.typeOfWorkDao.getById(jobAdvertAddDto.getTypeOfWorkId()));
+		jobAdvert.setWorkingTime(this.workingTimeDao.getById(jobAdvertAddDto.getWorkingTimeId()));
+		jobAdvert.setTypeOfWorkplace(this.typeOfWorkplaceDao.getById(jobAdvertAddDto.getTypeOfWorkplaceId()));
+		jobAdvert.setSalaryMin(jobAdvertAddDto.getSalaryMin());
+		jobAdvert.setSalaryMax(jobAdvertAddDto.getSalaryMax());
+		jobAdvert.setOpen(jobAdvertAddDto.isOpen());
+		jobAdvert.setActive(jobAdvertAddDto.isActive());
+		jobAdvert.setOpenPositionCount(jobAdvertAddDto.getOpenPositionCount());
+		jobAdvert.setDescription(jobAdvertAddDto.getDescription());
+		jobAdvert.setDeadline(jobAdvertAddDto.getDeadline());
+		jobAdvert.setPublishedAt(jobAdvertAddDto.getPublishedAt());		
+
 		if (!CheckIfNullField(jobAdvert)) {
 			return new ErrorResult("Eksik bilgi girdiniz. Lütfen bütün boşlukları doldurun.");
 		}
