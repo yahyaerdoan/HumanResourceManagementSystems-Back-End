@@ -6,11 +6,11 @@ import java.util.List;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertAddDto;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertDto;
 
 public interface JobAdvertService {
 
-	Result add(JobAdvertAddDto jobAdvertAddDto);
+	Result add(JobAdvertDto jobAdvertDto);
 
 	Result update(JobAdvert jobAdvert);
 

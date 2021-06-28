@@ -18,7 +18,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.TypeOfWorkplaceDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.WorkingTimeDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
-import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertAddDto;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertDto;
 
 @Service
 public class JobAdvertManager implements JobAdvertService {
@@ -43,21 +43,21 @@ public class JobAdvertManager implements JobAdvertService {
 	}
 
 	@Override
-	public Result add(JobAdvertAddDto jobAdvertAddDto) {
+	public Result add(JobAdvertDto jobAdvertDto) {
 		JobAdvert jobAdvert = new JobAdvert();
-		jobAdvert.setCity(this.cityDao.getById(jobAdvertAddDto.getCityId()));
-		jobAdvert.setEmployer(this.employerDao.getById(jobAdvertAddDto.getEmployerId()));
-		jobAdvert.setTypeOfWork(this.typeOfWorkDao.getById(jobAdvertAddDto.getTypeOfWorkId()));
-		jobAdvert.setWorkingTime(this.workingTimeDao.getById(jobAdvertAddDto.getWorkingTimeId()));
-		jobAdvert.setTypeOfWorkplace(this.typeOfWorkplaceDao.getById(jobAdvertAddDto.getTypeOfWorkplaceId()));
-		jobAdvert.setSalaryMin(jobAdvertAddDto.getSalaryMin());
-		jobAdvert.setSalaryMax(jobAdvertAddDto.getSalaryMax());
-		jobAdvert.setOpen(jobAdvertAddDto.isOpen());
-		jobAdvert.setActive(jobAdvertAddDto.isActive());
-		jobAdvert.setOpenPositionCount(jobAdvertAddDto.getOpenPositionCount());
-		jobAdvert.setDescription(jobAdvertAddDto.getDescription());
-		jobAdvert.setDeadline(jobAdvertAddDto.getDeadline());
-		jobAdvert.setPublishedAt(jobAdvertAddDto.getPublishedAt());		
+		jobAdvert.setCity(this.cityDao.getById(jobAdvertDto.getCityId()));
+		jobAdvert.setEmployer(this.employerDao.getById(jobAdvertDto.getEmployerId()));
+		jobAdvert.setTypeOfWork(this.typeOfWorkDao.getById(jobAdvertDto.getTypeOfWorkId()));
+		jobAdvert.setWorkingTime(this.workingTimeDao.getById(jobAdvertDto.getWorkingTimeId()));
+		jobAdvert.setTypeOfWorkplace(this.typeOfWorkplaceDao.getById(jobAdvertDto.getTypeOfWorkplaceId()));
+		jobAdvert.setSalaryMin(jobAdvertDto.getSalaryMin());
+		jobAdvert.setSalaryMax(jobAdvertDto.getSalaryMax());
+		jobAdvert.setOpen(jobAdvertDto.isOpen());
+		jobAdvert.setActive(jobAdvertDto.isActive());
+		jobAdvert.setOpenPositionCount(jobAdvertDto.getOpenPositionCount());
+		jobAdvert.setDescription(jobAdvertDto.getDescription());
+		jobAdvert.setDeadline(jobAdvertDto.getDeadline());
+		jobAdvert.setPublishedAt(jobAdvertDto.getPublishedAt());		
 
 		if (!CheckIfNullField(jobAdvert)) {
 			return new ErrorResult("Eksik bilgi girdiniz. Lütfen bütün boşlukları doldurun.");

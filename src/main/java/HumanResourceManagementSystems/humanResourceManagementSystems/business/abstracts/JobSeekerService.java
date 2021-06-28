@@ -9,13 +9,13 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dt
 
 public interface JobSeekerService {
 
-	DataResult<List<JobSeeker>> getAll();
-
 	Result add(JobSeeker jobSeeker);
+
+	DataResult<List<JobSeeker>> getAll();
 
 	DataResult<JobSeeker> getById(int id);
 
 	DataResult<JobSeeker> getJobSeekerByNationalId(String nationalityId);
-	
+
 	DataResult<JobSeekerCurriculumVitaeDto> getJobSeekerCurriculumVitaeDtosById(int id);
 }
