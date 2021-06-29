@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 //import javax.persistence.Id;
@@ -13,8 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,13 +31,13 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class JobSeeker extends User {
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "id")
-	//private int id;
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Column(name = "id")
+	// private int id;
 
-	//@Column(name="userId")
-	//private int userId;
+	// @Column(name="userId")
+	// private int userId;
 
 	@Column(name = "firstName")
 	private String firstName;
@@ -55,38 +54,36 @@ public class JobSeeker extends User {
 	@Column(name = "isVerified", columnDefinition = "boolean default false")
 	private boolean isVerified = false;
 
-	
 	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<School> schools;
 
-	
 	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<Experience> experiences;
 
-	
 	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<ForeignLanguage> foreignLanguages;
 
-	
 	@OneToOne(mappedBy = "jobSeeker", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Image images;
 
-	
 	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<Link> links;
 
-	
 	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<ProgrammingSkill> programmingSkills;
 
-	
 	@OneToMany(mappedBy = "jobSeeker")
 	@JsonIgnore
 	private List<CoverLetter> coverLetters;
+
+	@OneToMany(mappedBy = "jobSeeker")
+	@JsonIgnore
+	private List<Favorite> favorite;
+
 }
