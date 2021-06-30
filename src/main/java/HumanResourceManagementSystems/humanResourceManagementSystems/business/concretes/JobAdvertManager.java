@@ -127,4 +127,10 @@ public class JobAdvertManager implements JobAdvertService {
 		return false;
 	}
 
+	@Override
+	public Result activateAndconfirm(int jobAdvertId, int systemWorkerId) {
+		return null;
+		
+	}
+
 }

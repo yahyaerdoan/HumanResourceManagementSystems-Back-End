@@ -17,6 +17,8 @@ public interface JobAdvertService {
 	Result delete(int id);
 
 	Result changeOpenToClose(int id);
+	
+	Result activateAndconfirm(int jobAdvertId, int systemWorkerId);
 
 	DataResult<JobAdvert> getById(int id);
 

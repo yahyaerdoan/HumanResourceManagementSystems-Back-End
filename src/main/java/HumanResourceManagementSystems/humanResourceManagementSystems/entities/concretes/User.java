@@ -9,7 +9,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,15 +30,20 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "employers" })
 public class User extends Base {
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "id")
-	//private int id;
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Column(name = "id")
+	// private int id;
 
 	@Column(name = "emailAddress")
+	@Email
+	@NotBlank
+	@NotNull
 	private String emailAddress;
 
 	@Column(name = "password")
+	@NotBlank
+	@NotNull
 	private String password;
 
 }
