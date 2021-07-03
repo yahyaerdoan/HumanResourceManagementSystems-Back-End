@@ -3,7 +3,9 @@ package HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
 
@@ -19,4 +21,10 @@ public interface JobAdvertDao extends JpaRepository<JobAdvert, Integer> {
 	List<JobAdvert> getAllOpenJobAdvertByEmployer(int id);
 
 	JobAdvert getById(int id);
+
+	@Modifying
+	@Query("Update JobAdvert set isActive=true where id=:id")
+	int activateAndConfirm(@Param("id") int id);
+
+	List<JobAdvert> getByIsActiveFalse();
 }

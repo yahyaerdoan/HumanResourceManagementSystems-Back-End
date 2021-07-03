@@ -20,19 +20,19 @@ public class Base {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "id")
+	@Column(name = "id")
 	private int id;
-	
+
 	@JsonIgnore
-	@Column(name="createdAt", columnDefinition = "Date default current_date")
+	@Column(name = "createdAt", columnDefinition = "Date default current_date")
 	private LocalDate createAt = LocalDate.now();
-	
+
 	@JsonIgnore
-	@Column(name= "isActive", columnDefinition = "boolean default true")
+	@Column(name = "isActive", columnDefinition = "boolean default false")
 	private boolean isActive = false;
-	
+
 	@JsonIgnore
-	@Column(name= "isDeleted", columnDefinition = "boolean default false")
+	@Column(name = "isDeleted", columnDefinition = "boolean default false")
 	private boolean isDeleted = false;
-	
+
 }

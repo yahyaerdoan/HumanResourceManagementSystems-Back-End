@@ -2,7 +2,6 @@ package HumanResourceManagementSystems.humanResourceManagementSystems.business.a
 
 import java.util.List;
 
-
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
@@ -17,8 +16,8 @@ public interface JobAdvertService {
 	Result delete(int id);
 
 	Result changeOpenToClose(int id);
-	
-	Result activateAndconfirm(int jobAdvertId, int systemWorkerId);
+
+	Result activateAndConfirm(int id);
 
 	DataResult<JobAdvert> getById(int id);
 
@@ -29,4 +28,8 @@ public interface JobAdvertService {
 	DataResult<List<JobAdvert>> getAllByOrderByPublishedAt();
 
 	DataResult<List<JobAdvert>> getAllOpenJobAdvertByEmployer(int id);
+
+	DataResult<List<JobAdvert>> getByIsActiveFalse();
+
+	DataResult<List<JobAdvert>> getAllSorted();
 }

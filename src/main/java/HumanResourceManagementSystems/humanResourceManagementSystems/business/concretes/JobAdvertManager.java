@@ -3,7 +3,9 @@ package HumanResourceManagementSystems.humanResourceManagementSystems.business.c
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobAdvertService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
@@ -57,7 +59,7 @@ public class JobAdvertManager implements JobAdvertService {
 		jobAdvert.setOpenPositionCount(jobAdvertDto.getOpenPositionCount());
 		jobAdvert.setDescription(jobAdvertDto.getDescription());
 		jobAdvert.setDeadline(jobAdvertDto.getDeadline());
-		jobAdvert.setPublishedAt(jobAdvertDto.getPublishedAt());		
+		jobAdvert.setPublishedAt(jobAdvertDto.getPublishedAt());
 
 		if (!CheckIfNullField(jobAdvert)) {
 			return new ErrorResult("Eksik bilgi girdiniz. Lütfen bütün boşlukları doldurun.");
@@ -128,9 +130,21 @@ public class JobAdvertManager implements JobAdvertService {
 	}
 
 	@Override
-	public Result activateAndconfirm(int jobAdvertId, int systemWorkerId) {
-		return null;
-		
+	public Result activateAndConfirm(int id) {
+		this.jobAdvertDao.activateAndConfirm(id);
+		return new SuccessResult("iş ilanı onaylandı.");
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByIsActiveFalse() {
+		return new SuccessDataResult<List<JobAdvert>>(jobAdvertDao.getByIsActiveFalse());
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getAllSorted() {
+		Sort sort=Sort.by(Sort.Direction.ASC,"publishedAt");
+		return new SuccessDataResult<List<JobAdvert>>
+		(this.jobAdvertDao.findAll(sort),"Success");
 	}
 
 }
