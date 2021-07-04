@@ -36,4 +36,5 @@ public class TypeOfWorkplace extends Base {
 
 	@OneToMany(mappedBy = "typeOfWorkplace") // jobAdverts tablosu typeofwork tablosu ile ilişkilendirilmiş durumda
 	private List<JobAdvert> jobAdverts;
+	
 }

@@ -30,6 +30,10 @@ public class Base {
 	@JsonIgnore
 	@Column(name = "isActive", columnDefinition = "boolean default false")
 	private boolean isActive = false;
+	
+	@JsonIgnore
+	@Column(name = "confirmStatus", columnDefinition = "boolean default false")
+	private boolean confirmStatus = false;
 
 	@JsonIgnore
 	@Column(name = "isDeleted", columnDefinition = "boolean default false")

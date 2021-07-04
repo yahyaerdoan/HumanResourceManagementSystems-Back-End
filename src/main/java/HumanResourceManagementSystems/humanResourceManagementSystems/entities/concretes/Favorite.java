@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "favorite")
+@Table(name = "favorites")
 @EqualsAndHashCode(callSuper = true)
 public class Favorite extends Base {
 
@@ -28,10 +28,11 @@ public class Favorite extends Base {
 	// private int id;
 
 	@ManyToOne()
-	@JoinColumn(name = "jobSeekerId")
+	@JoinColumn(name = "jobSeekerId", insertable = false, updatable = false)
 	private JobSeeker jobSeeker;
 
 	@ManyToOne()
-	@JoinColumn(name = "jobAdvertId")
+	@JoinColumn(name = "jobAdvertId", insertable = false, updatable = false)
 	private JobAdvert jobAdvert;
+	
 }

@@ -27,7 +27,7 @@ public class FavoriteManager implements FavoriteService {
 	@Override
 	public Result add(Favorite favorite) {
 		this.favoriteDao.save(favorite);
-		return new SuccessResult("Favorşlerime eklendi.");
+		return new SuccessResult("Favorilerime eklendi.");
 	}
 
 	@Override
