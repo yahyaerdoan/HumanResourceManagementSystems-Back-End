@@ -7,8 +7,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,44 +40,58 @@ public class JobAdvertsController {
 	public Result add(@RequestBody JobAdvertDto jobAdvertDto) {
 		return this.jobAdvertService.add(jobAdvertDto);
 	}
-	@GetMapping("/getbyid")
-	public DataResult<JobAdvert> getById(int id){
+
+	@PutMapping("/update")
+	public Result update(@RequestBody JobAdvert jobAdvert) {
+		return this.jobAdvertService.update(jobAdvert);
+	}
+
+	@DeleteMapping("/delete")
+	public Result delete(@RequestParam("id") int id) {
+		return this.jobAdvertService.delete(id);
+	}
+
+	@GetMapping("/getById")
+	public DataResult<JobAdvert> getById(int id) {
 		return this.jobAdvertService.getById(id);
 	}
-	
+
 	@GetMapping("/getAll")
-	public DataResult<List<JobAdvert>> getAll(){		
+	public DataResult<List<JobAdvert>> getAll() {
 		return this.jobAdvertService.getAll();
 	}
-	
+
 	@PostMapping("/changeOpenToClose")
-	public Result changeOpenToClose(int id){
+	public Result changeOpenToClose(int id) {
 		return this.jobAdvertService.changeOpenToClose(id);
 	}
-	
+
 	@GetMapping("/getAllOpenJobAdvertList")
-	public DataResult<List<JobAdvert>> getAllOpenJobAdvertList(){
+	public DataResult<List<JobAdvert>> getAllOpenJobAdvertList() {
 		return this.jobAdvertService.getAllOpenJobAdvertList();
 	}
-	
+
 	@GetMapping("/findAllByOrderByPublishedAt")
-	public DataResult<List<JobAdvert>> getAllByOrderByPublishedAt(){
+	public DataResult<List<JobAdvert>> getAllByOrderByPublishedAt() {
 		return this.jobAdvertService.getAllByOrderByPublishedAt();
 	}
-	
+
 	@GetMapping("/getAllOpenJobAdvertByEmployer")
-	public DataResult<List<JobAdvert>> getAllOpenJobAdvertByEmployer(int id){
+	public DataResult<List<JobAdvert>> getAllOpenJobAdvertByEmployer(int id) {
 		return this.jobAdvertService.getAllOpenJobAdvertByEmployer(id);
 	}
+
 	@PostMapping("/activateAndConfirm")
 	@Transactional
 	public Result activateAndConfirm(@RequestParam int id) {
 		return this.jobAdvertService.activateAndConfirm(id);
 	}
+
 	@GetMapping("/getByIsActiveFalse")
-	public ResponseEntity<?> getByIsActiveFalse(){
+	public ResponseEntity<?> getByIsActiveFalse() {
 		return ResponseEntity.ok(this.jobAdvertService.getByIsActiveFalse());
 	}
+
 	@GetMapping("/getAllAsc")
 	public DataResult<List<JobAdvert>> getAllSorted() {
 		return this.jobAdvertService.getAllSorted();

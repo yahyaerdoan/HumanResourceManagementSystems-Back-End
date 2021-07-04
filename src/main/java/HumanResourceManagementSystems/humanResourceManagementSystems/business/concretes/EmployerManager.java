@@ -33,7 +33,24 @@ public class EmployerManager implements EmployerService {
 	@Override
 	public Result add(Employer employer) {
 		this.employerDao.save(employer);
-		return new SuccessResult("İş veren eklendi.");
+		return new SuccessResult("İş veren bilgisi eklendi.");
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.employerDao.deleteById(id);
+		return new SuccessResult("İş veren bilgisi silindi.");
+	}
+
+	@Override
+	public Result update(Employer employer) {
+		this.employerDao.save(employer);
+		return new SuccessResult("İş veren bilgisi güncellendi.");
+	}
+
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return new SuccessDataResult<Employer>(this.employerDao.getById(id));
 	}
 
 }

@@ -31,16 +31,6 @@ public class LinkManager implements LinkService {
 	}
 
 	@Override
-	public DataResult<Link> getById(int id) {
-		return new SuccessDataResult<Link>(this.linkDao.getById(id));
-	}
-
-	@Override
-	public DataResult<List<Link>> getAllByJobSeekerId(int id) {
-		return new SuccessDataResult<List<Link>>(this.linkDao.getAllByJobSeekerId(id));
-	}
-
-	@Override
 	public Result delete(int id) {
 		this.linkDao.deleteById(id);
 		return new SuccessResult("Bağlantı adresi silindi.");
@@ -50,6 +40,16 @@ public class LinkManager implements LinkService {
 	public Result update(Link link) {
 		this.linkDao.save(link);
 		return new SuccessResult("Bağlantı adresi güncellendi.");
+	}
+
+	@Override
+	public DataResult<Link> getById(int id) {
+		return new SuccessDataResult<Link>(this.linkDao.getById(id));
+	}
+
+	@Override
+	public DataResult<List<Link>> getAllByJobSeekerId(int id) {
+		return new SuccessDataResult<List<Link>>(this.linkDao.getAllByJobSeekerId(id));
 	}
 
 	@Override

@@ -6,11 +6,17 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.User;
 
-public interface UserService{
-
-	DataResult<List<User>> getAll();
+public interface UserService {
 
 	Result add(User user);
+
+	Result delete(int id);
+
+	Result update(User user);
+
+	DataResult<User> getById(int id);
+
+	DataResult<List<User>> getAll();
 
 	DataResult<User> getUserByEmailAddress(String emailAddress);
 }

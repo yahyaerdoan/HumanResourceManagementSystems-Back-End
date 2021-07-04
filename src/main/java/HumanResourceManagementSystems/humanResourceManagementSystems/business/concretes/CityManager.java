@@ -35,4 +35,20 @@ public class CityManager implements CityService {
 		return new SuccessDataResult<List<City>>(this.cityDao.findAll());
 	}
 
+	@Override
+	public Result update(City city) {
+		this.cityDao.save(city);
+	    return new SuccessResult("Şehir bilgisi güncellendi.");
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.cityDao.deleteById(id);
+	    return new SuccessResult("Şehir bilgisi silindi.");
+	}
+
+	@Override
+	public DataResult<City> getById(int id) {
+		return new SuccessDataResult<City>(this.cityDao.getById(id));
+	}
 }

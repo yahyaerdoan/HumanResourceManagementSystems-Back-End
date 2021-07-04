@@ -10,6 +10,12 @@ public interface TypeOfWorkService {
 
 	Result add(TypeOfWork typeOfWork);
 
+	Result delete(int id);
+
+	Result update(TypeOfWork typeOfWork);
+
+	DataResult<TypeOfWork> getById(int id);
+
 	DataResult<List<TypeOfWork>> getAll();
 
 	DataResult<TypeOfWork> getWorkByTitle(String title);

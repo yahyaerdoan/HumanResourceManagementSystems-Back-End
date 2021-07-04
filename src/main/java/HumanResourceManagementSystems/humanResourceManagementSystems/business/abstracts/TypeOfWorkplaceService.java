@@ -10,6 +10,12 @@ public interface TypeOfWorkplaceService {
 
 	Result add(TypeOfWorkplace typeOfWorkplace);
 
+	Result delete(int id);
+
+	Result update(TypeOfWorkplace typeOfWorkplace);
+
+	DataResult<TypeOfWorkplace> getById(int id);
+
 	DataResult<List<TypeOfWorkplace>> getAll();
 
 	DataResult<TypeOfWorkplace> getTypeByWorkplace(String typeOfWorkplace);

@@ -10,6 +10,12 @@ public interface WorkingTimeService {
 
 	Result add(WorkingTime workingTime);
 
+	Result update(WorkingTime workingTime);
+
+	Result delete(int id);
+
+	DataResult<WorkingTime> getById(int id);
+
 	DataResult<List<WorkingTime>> getAll();
 
 	DataResult<WorkingTime> getWorkingByTime(String workingTime);

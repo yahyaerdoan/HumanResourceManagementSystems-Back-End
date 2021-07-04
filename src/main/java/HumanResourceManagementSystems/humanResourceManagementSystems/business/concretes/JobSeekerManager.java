@@ -28,7 +28,7 @@ public class JobSeekerManager implements JobSeekerService {
 	@Override
 	public Result add(JobSeeker jobSeeker) {
 		this.jobSeekerDao.save(jobSeeker);
-		return new SuccessResult("İş arayan eklendi.");
+		return new SuccessResult("İş arayan bilgisi eklendi.");
 	}
 
 	@Override
@@ -60,6 +60,18 @@ public class JobSeekerManager implements JobSeekerService {
 		curriculumVitaeDto.coverLetter = jobSeeker.getCoverLetters();
 		curriculumVitaeDto.image = jobSeeker.getImages();
 		return new SuccessDataResult<JobSeekerCurriculumVitaeDto>(curriculumVitaeDto);
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.jobSeekerDao.deleteById(id);
+		return new SuccessResult("İş arayan bilgisi silindi.");
+	}
+
+	@Override
+	public Result update(JobSeeker jobSeeker) {
+		this.jobSeekerDao.save(jobSeeker);
+		return new SuccessResult("İş arayan bilgisi güncellendi.");
 	}
 
 }

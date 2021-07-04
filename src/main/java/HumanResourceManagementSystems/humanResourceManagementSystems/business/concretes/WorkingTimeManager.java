@@ -31,6 +31,18 @@ public class WorkingTimeManager implements WorkingTimeService {
 	}
 
 	@Override
+	public Result update(WorkingTime workingTime) {
+		this.workingTimeDao.save(workingTime);
+		return new SuccessResult("Çalışma zamanı türü güncellendi.");
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.workingTimeDao.deleteById(id);
+		return new SuccessResult("Çalışma zamanı türü silindi.");
+	}
+
+	@Override
 	public DataResult<List<WorkingTime>> getAll() {
 		return new SuccessDataResult<List<WorkingTime>>(this.workingTimeDao.findAll(),
 				"Çalışma zamanı türleri listelendi.");
@@ -40,6 +52,11 @@ public class WorkingTimeManager implements WorkingTimeService {
 	public DataResult<WorkingTime> getWorkingByTime(String workingTime) {
 		return new SuccessDataResult<WorkingTime>(this.workingTimeDao.findByWorkingTime(workingTime),
 				"Çalışma zamanı türleri getirildi.");
+	}
+
+	@Override
+	public DataResult<WorkingTime> getById(int id) {
+		return new SuccessDataResult<WorkingTime>(this.workingTimeDao.getById(id));
 	}
 
 }

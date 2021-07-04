@@ -11,6 +11,10 @@ public interface JobSeekerService {
 
 	Result add(JobSeeker jobSeeker);
 
+	Result delete(int id);
+
+	Result update(JobSeeker jobSeeker);
+
 	DataResult<List<JobSeeker>> getAll();
 
 	DataResult<JobSeeker> getById(int id);

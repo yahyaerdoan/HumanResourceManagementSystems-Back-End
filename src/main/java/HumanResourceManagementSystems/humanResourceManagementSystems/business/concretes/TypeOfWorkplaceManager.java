@@ -32,7 +32,7 @@ public class TypeOfWorkplaceManager implements TypeOfWorkplaceService {
 
 	@Override
 	public DataResult<List<TypeOfWorkplace>> getAll() {
-		return new SuccessDataResult<List<TypeOfWorkplace>>(this.typeOfWorkplaceDao.findAll(), 
+		return new SuccessDataResult<List<TypeOfWorkplace>>(this.typeOfWorkplaceDao.findAll(),
 				"Çalışma yeri türleri listelendi.");
 	}
 
@@ -40,6 +40,23 @@ public class TypeOfWorkplaceManager implements TypeOfWorkplaceService {
 	public DataResult<TypeOfWorkplace> getTypeByWorkplace(String typeOfWorkplace) {
 		return new SuccessDataResult<TypeOfWorkplace>(this.typeOfWorkplaceDao.findByTypeOfWorkplace(typeOfWorkplace),
 				"Çalışma zamanı türleri getirildi.");
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.typeOfWorkplaceDao.deleteById(id);
+		return new SuccessResult("Çalışma yeri türü silindi.");
+	}
+
+	@Override
+	public Result update(TypeOfWorkplace typeOfWorkplace) {
+		this.typeOfWorkplaceDao.save(typeOfWorkplace);
+		return new SuccessResult("Çalışma yeri türü güncellendi.");
+	}
+
+	@Override
+	public DataResult<TypeOfWorkplace> getById(int id) {
+		return new SuccessDataResult<TypeOfWorkplace>(this.typeOfWorkplaceDao.getById(id));
 	}
 
 }

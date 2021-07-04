@@ -27,20 +27,35 @@ public class TypeOfWorkManager implements TypeOfWorkService {
 	@Override
 	public DataResult<List<TypeOfWork>> getAll() {
 
-		return new SuccessDataResult<List<TypeOfWork>>(this.typeOfWorkDao.findAll(), 
-				"İş pozisyonları listelendi.");
+		return new SuccessDataResult<List<TypeOfWork>>(this.typeOfWorkDao.findAll(), "İş pozisyonları listelendi.");
 	}
 
 	@Override
 	public Result add(TypeOfWork typeOfWork) {
 		this.typeOfWorkDao.save(typeOfWork);
-		return new SuccessResult("İş pzisyonu eklendi.");
+		return new SuccessResult("İş pozisyonu bilgisi eklendi.");
 	}
 
 	@Override
 	public DataResult<TypeOfWork> getWorkByTitle(String title) {
-		return new SuccessDataResult<TypeOfWork>(this.typeOfWorkDao.findByTitle(title), 
-				"İş pozisyonları getirildi.");
+		return new SuccessDataResult<TypeOfWork>(this.typeOfWorkDao.findByTitle(title), "İş pozisyonları getirildi.");
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.typeOfWorkDao.deleteById(id);
+		return new SuccessResult("İş pozisyonu bilgisi silindi.");
+	}
+
+	@Override
+	public Result update(TypeOfWork typeOfWork) {
+		this.typeOfWorkDao.save(typeOfWork);
+		return new SuccessResult("İş pozisyonu bilgisi güncellendi.");
+	}
+
+	@Override
+	public DataResult<TypeOfWork> getById(int id) {
+		return new SuccessDataResult<TypeOfWork>(this.typeOfWorkDao.getById(id));
 	}
 
 }

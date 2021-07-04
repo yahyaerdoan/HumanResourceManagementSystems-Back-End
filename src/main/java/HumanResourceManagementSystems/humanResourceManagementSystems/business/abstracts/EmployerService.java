@@ -8,8 +8,13 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.entities.co
 
 public interface EmployerService {
 
-	DataResult<List<Employer>> getAll();
-
 	Result add(Employer employer);
-	
+
+	Result delete(int id);
+
+	Result update(Employer employer);
+
+	DataResult<Employer> getById(int id);
+
+	DataResult<List<Employer>> getAll();
 }

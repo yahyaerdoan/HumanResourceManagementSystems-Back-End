@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,13 +37,13 @@ public class FavoritiesController {
 		return this.favoriteService.add(favorite);
 	}
 
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
 	public Result delete(@RequestParam("id") int id) {
 
 		return this.favoriteService.delete(id);
 	}
 
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public Result update(@RequestBody Favorite favorite) {
 
 		return this.favoriteService.update(favorite);
