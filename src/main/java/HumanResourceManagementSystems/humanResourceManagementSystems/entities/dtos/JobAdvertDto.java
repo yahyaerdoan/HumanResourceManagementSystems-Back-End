@@ -25,4 +25,15 @@ public class JobAdvertDto {
 	private String description;
 	private LocalDate deadline;
 	private LocalDate publishedAt;
+	
+	private String name;
+	private String companyName;
+	private String webSiteDomainName;
+	private String phoneNumber;
+	private String title;	
+	private String typeOfWorkplace;
+	private String workingTime;
+	
+	private LocalDate createAt ;
+	private boolean confirmStatus;
 }

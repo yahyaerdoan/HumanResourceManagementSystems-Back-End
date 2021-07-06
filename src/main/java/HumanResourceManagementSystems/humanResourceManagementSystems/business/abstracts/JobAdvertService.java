@@ -6,6 +6,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertDto;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertFilterDto;
 
 public interface JobAdvertService {
 
@@ -19,7 +20,11 @@ public interface JobAdvertService {
 
 	Result activateAndConfirm(int id);
 
+	Result updateconfirmStatus(int id);
+
 	DataResult<JobAdvert> getById(int id);
+
+	DataResult<List<JobAdvert>> getByEmployerId(int id);
 
 	DataResult<List<JobAdvert>> getAll();
 
@@ -29,7 +34,16 @@ public interface JobAdvertService {
 
 	DataResult<List<JobAdvert>> getAllOpenJobAdvertByEmployer(int id);
 
-	DataResult<List<JobAdvert>> getByIsActiveFalse();
+	DataResult<List<JobAdvert>> getAllByIsActiveTrue();
+
+	DataResult<List<JobAdvert>> getAllByIsActiveFalse();
 
 	DataResult<List<JobAdvert>> getAllSorted();
+
+	DataResult<List<JobAdvert>> getByisActiveTrueAndConfirmStatusTrue();
+
+	DataResult<List<JobAdvert>> getByisActiveTrueAndConfirmStatusTrue(int pageNo, int pageSize);
+
+	DataResult<List<JobAdvert>> getByisActiveTrueAndConfirmStatusTrueAndFilter(int pageNo, int pageSize,
+			JobAdvertFilterDto jobAdvertFilterDto);
 }

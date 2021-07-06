@@ -3,9 +3,10 @@ package HumanResourceManagementSystems.humanResourceManagementSystems.business.c
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 
 import HumanResourceManagementSystems.humanResourceManagementSystems.business.abstracts.JobAdvertService;
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.DataResult;
@@ -21,6 +22,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.
 import HumanResourceManagementSystems.humanResourceManagementSystems.dataAccess.abstracts.WorkingTimeDao;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertDto;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertFilterDto;
 
 @Service
 public class JobAdvertManager implements JobAdvertService {
@@ -132,19 +134,54 @@ public class JobAdvertManager implements JobAdvertService {
 	@Override
 	public Result activateAndConfirm(int id) {
 		this.jobAdvertDao.activateAndConfirm(id);
-		return new SuccessResult("iş ilanı onaylandı.");
+		return new SuccessResult("iş ilanı aktif.");
 	}
 
 	@Override
-	public DataResult<List<JobAdvert>> getByIsActiveFalse() {
-		return new SuccessDataResult<List<JobAdvert>>(jobAdvertDao.getByIsActiveFalse());
+	public DataResult<List<JobAdvert>> getAllByIsActiveFalse() {
+		return new SuccessDataResult<List<JobAdvert>>(jobAdvertDao.getAllByIsActiveFalse());
 	}
 
 	@Override
 	public DataResult<List<JobAdvert>> getAllSorted() {
-		Sort sort=Sort.by(Sort.Direction.ASC,"publishedAt");
-		return new SuccessDataResult<List<JobAdvert>>
-		(this.jobAdvertDao.findAll(sort),"Success");
+		Sort sort = Sort.by(Sort.Direction.ASC, "publishedAt");
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAll(sort), "Success");
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getAllByIsActiveTrue() {
+		return new SuccessDataResult<List<JobAdvert>>(jobAdvertDao.getAllByIsActiveTrue());
+	}
+
+	@Override
+	public Result updateconfirmStatus(int id) {
+		this.jobAdvertDao.updateconfirmStatus(id);
+		return new SuccessResult("iş ilanı onaylandı.");
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByEmployerId(int id) {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByEmployerId(id));
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByisActiveTrueAndConfirmStatusTrue() {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByisActiveTrueAndConfirmStatusTrue());
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByisActiveTrueAndConfirmStatusTrueAndFilter(int pageNo, int pageSize,
+			JobAdvertFilterDto jobAdvertFilterDto) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+		return new SuccessDataResult<List<JobAdvert>>(
+				this.jobAdvertDao.getByFilter(jobAdvertFilterDto, pageable).getContent(),
+				this.jobAdvertDao.getByFilter(jobAdvertFilterDto, pageable).getTotalElements() + "");
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByisActiveTrueAndConfirmStatusTrue(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.findAll(pageable).getContent());
 	}
 
 }

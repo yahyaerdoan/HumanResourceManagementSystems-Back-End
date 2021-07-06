@@ -21,6 +21,7 @@ import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilit
 import HumanResourceManagementSystems.humanResourceManagementSystems.core.utilities.results.Result;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes.JobAdvert;
 import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertDto;
+import HumanResourceManagementSystems.humanResourceManagementSystems.entities.dtos.JobAdvertFilterDto;
 
 @CrossOrigin
 @RestController
@@ -87,13 +88,46 @@ public class JobAdvertsController {
 		return this.jobAdvertService.activateAndConfirm(id);
 	}
 
-	@GetMapping("/getByIsActiveFalse")
-	public ResponseEntity<?> getByIsActiveFalse() {
-		return ResponseEntity.ok(this.jobAdvertService.getByIsActiveFalse());
+	@PostMapping("/updateconfirmStatus")
+	@Transactional
+	public Result updateconfirmStatus(@RequestParam int id) {
+		return this.jobAdvertService.updateconfirmStatus(id);
+	}
+
+	@GetMapping("/getAllByIsActiveFalse")
+	public ResponseEntity<?> getAllByIsActiveFalse() {
+		return ResponseEntity.ok(this.jobAdvertService.getAllByIsActiveFalse());
+	}
+
+	@GetMapping("/getAllByIsActiveTrue")
+	public ResponseEntity<?> getAllByIsActiveTrue() {
+		return ResponseEntity.ok(this.jobAdvertService.getAllByIsActiveTrue());
 	}
 
 	@GetMapping("/getAllAsc")
 	public DataResult<List<JobAdvert>> getAllSorted() {
 		return this.jobAdvertService.getAllSorted();
+	}
+
+	@GetMapping("/getByEmployerId")
+	public ResponseEntity<?> getByEmployerId(@RequestParam int id) {
+		return ResponseEntity.ok(this.jobAdvertService.getByEmployerId(id));
+	}
+
+	@GetMapping("/getByisActiveTrueAndConfirmStatusTrue")
+	public ResponseEntity<?> getByisActiveTrueAndConfirmStatusTrue() {
+		return ResponseEntity.ok(this.jobAdvertService.getByisActiveTrueAndConfirmStatusTrue());
+	}
+
+	@GetMapping("/getByPage")
+	public ResponseEntity<?> getByisActiveTrueAndConfirmStatusTrue(@RequestParam int pageNo,
+			@RequestParam int pageSize) {
+		return ResponseEntity.ok(this.jobAdvertService.getByisActiveTrueAndConfirmStatusTrue(pageNo, pageSize));
+	}
+
+	@PostMapping("/getByisActiveTrueAndConfirmStatusTrueAndFilter")
+	public Result getByisActiveTrueAndConfirmStatusTrueAndFilter(@RequestParam int pageNo, @RequestParam int pageSize,
+			@RequestBody JobAdvertFilterDto jobAdvertFilterDto) {
+		return jobAdvertService.getByisActiveTrueAndConfirmStatusTrueAndFilter(pageNo, pageSize, jobAdvertFilterDto);
 	}
 }
