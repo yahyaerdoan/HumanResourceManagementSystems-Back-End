@@ -3,6 +3,7 @@ package HumanResourceManagementSystems.humanResourceManagementSystems.api.contro
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +42,14 @@ public class EmployersController {
 		return this.employerService.delete(id);
 	}
 
-	@PutMapping("/update")
-	public Result update(@RequestBody Employer employer) {
-		return this.employerService.update(employer);
+	@PutMapping("/updateWaiting")
+	public ResponseEntity<?> updateWaiting(@RequestBody Employer employer) {
+		return ResponseEntity.ok(this.employerService.updateWaiting(employer));
+	}
+
+	@PostMapping("/updateIsVerified")
+	public ResponseEntity<?> updateIsVerified(@RequestParam int id) {
+		return ResponseEntity.ok(this.employerService.updateIsVerified(id));
 	}
 
 	@GetMapping("/getall")
@@ -54,6 +60,11 @@ public class EmployersController {
 	@GetMapping("/getById")
 	public DataResult<Employer> getById(@RequestParam("id") int id) {
 		return this.employerService.getById(id);
+	}
+
+	@GetMapping("/getByIsVerifiedFalse")
+	public ResponseEntity<?> getByIsVerifiedFalse() {
+		return ResponseEntity.ok(this.employerService.getByIsVerifiedFalse());
 	}
 
 }

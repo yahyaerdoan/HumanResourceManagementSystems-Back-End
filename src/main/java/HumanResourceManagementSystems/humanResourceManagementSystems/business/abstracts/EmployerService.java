@@ -12,9 +12,13 @@ public interface EmployerService {
 
 	Result delete(int id);
 
-	Result update(Employer employer);
+	Result updateWaiting(Employer employer);
 
 	DataResult<Employer> getById(int id);
 
 	DataResult<List<Employer>> getAll();
+
+	Result updateIsVerified(int id);
+
+	DataResult<List<Employer>> getByIsVerifiedFalse();
 }

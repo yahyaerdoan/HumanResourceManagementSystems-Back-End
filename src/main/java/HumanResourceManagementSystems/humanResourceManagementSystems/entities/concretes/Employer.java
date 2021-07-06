@@ -1,6 +1,7 @@
 package HumanResourceManagementSystems.humanResourceManagementSystems.entities.concretes;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +12,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +31,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "employers")
 @PrimaryKeyJoinColumn(name = "userId")
 @EqualsAndHashCode(callSuper = false)
+@TypeDef(name = "json", typeClass = JsonType.class)
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" }) // Datanın sonsuz döngü içine girip
 																				// aktarılmasının önünü kesiyor ve data
 																				// ne kadarsa onu aktarıyor.
@@ -49,7 +55,13 @@ public class Employer extends User {
 	private String phoneNumber;
 
 	@Column(name = "isVerified", columnDefinition = "boolean default false")
+	@JsonIgnore
 	private boolean isVerified = false;
+
+	@Column(name = "employerUpdate", columnDefinition = "jsonb")
+	@Type(type = "json")
+	@JsonIgnore
+	private Map<String, Object> employerUpdate;
 
 	@OneToMany(mappedBy = "employer")
 	@JsonIgnore
